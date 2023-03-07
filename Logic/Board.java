@@ -1,9 +1,9 @@
 package Logic;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+
 
 public class Board {
+    private Piece [][] board;
     //Queens
     public Piece[][] AssingnQueen(Piece[][] board){
         board[5][8] = new Queen(true,"QW",5,8);
@@ -28,8 +28,8 @@ public class Board {
     public Piece[][] AssingnsKinght(Piece[][] board){
         board[2][1] = new Knight(true,"CB",3,1);
         board[7][1] = new Knight(true,"CB",7,1);
-        board[2][8] = new Knight(false,"CN",2,8);
-        board[7][8] = new Knight(false,"CN",7,8);
+        board[2][8] = new Knight(false,"CW",2,8);
+        board[7][8] = new Knight(false,"CW",7,8);
         return board;
     }
 
@@ -37,16 +37,16 @@ public class Board {
     public Piece[][] AssingnsBishops(Piece[][] board){
         board[3][1] = new Bishop(true,"AB",4,1);
         board[6][1] = new Bishop(true,"AB",6,1);
-        board[3][8] = new Bishop(false,"AN",3,8);
-        board[6][8] = new Bishop(false,"AN",6,8);
+        board[3][8] = new Bishop(false,"AW",3,8);
+        board[6][8] = new Bishop(false,"AW",6,8);
         return board;
     }
     //Rooks
     public Piece[][] AssingnsRooks(Piece[][] board){
         board[1][1] = new Rook(true,"TB",1,1);
         board[8][1] = new Rook(true,"TB",8,1);
-        board[1][8] = new Rook(false,"TN",1,8);
-        board[8][8] = new Rook(false,"TN",8,8);
+        board[1][8] = new Rook(false,"TW",1,8);
+        board[8][8] = new Rook(false,"TW",8,8);
 
         return board;
 
@@ -81,9 +81,5 @@ public class Board {
                 }
                 System.out.println();
             }
-
     }
-
-
-
 }
