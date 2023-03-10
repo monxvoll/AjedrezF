@@ -1,7 +1,5 @@
 package Logic;
 
-
-
 public class Board {
     private Piece [][] board;
     //Queens
@@ -25,7 +23,7 @@ public class Board {
         return board;
     }
     //Knight
-    public Piece[][] AssingnsKinght(Piece[][] board){
+    public Piece[][] AssingnsKnight(Piece[][] board){
         board[2][1] = new Knight(true,"CB",3,1);
         board[7][1] = new Knight(true,"CB",7,1);
         board[2][8] = new Knight(false,"CW",2,8);
@@ -52,6 +50,16 @@ public class Board {
 
     }
 
+    public Board(){
+        board = new Piece[9][9];
+        AssingnKings(board);
+        AssingnQueen(board);
+        AssingnsBishops(board);
+        AssingnsKnight(board);
+        AssingnsPawns(board);
+        AssingnsRooks(board);
+    }
+
     public static void main(String[] args) {
 
         Board tablero = new Board();
@@ -60,7 +68,7 @@ public class Board {
         tablero.AssingnsRooks(pieza);
         tablero.AssingnsBishops(pieza);
         tablero.AssingnQueen(pieza);
-        tablero.AssingnsKinght(pieza);
+        tablero.AssingnsKnight(pieza);
         tablero.AssingnsPawns(pieza);
         tablero.AssingnKings(pieza);
         char c = 'A';
