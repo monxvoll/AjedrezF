@@ -10,4 +10,5 @@ public class Queen extends Piece{
     public Queen(boolean color, String name, int ubicationX, int ubicationY) {
         super(color, name, ubicationX, ubicationY);
     }
+    public Queen(){}
 }
