@@ -1,10 +1,10 @@
 ***********************************************
 Proyecto de ajedrez
-presentado por : 
-presentado a : 
+presentado por : Steven Universe and Jose S
+presentado a : Ing.Ivan Leal
 
-En que consiste el proyecto
-
+En que consiste el proyecto:
+El proyecto consiste en un ajedren funcional
 comandos usados
 git
 
