@@ -1,6 +1,8 @@
 package Logic;
 
 public class Board {
+
+    public void verification(){}
     private Piece [][] board;
     //Queens
     public Piece[][] AssingnQueen(Piece[][] board){

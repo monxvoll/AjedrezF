@@ -1,7 +1,7 @@
 ***********************************************
 Proyecto de ajedrez
 presentado por : Steven Universe and Jose S
-presentado a : Ing.Ivan Leal siu
+presentado a : Ing.Ivan Leal siuuuuuuuuuuu
 
 En que consiste el proyecto:
 El proyecto consiste en un ajedren funcional
