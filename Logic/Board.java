@@ -55,42 +55,36 @@ public class Board {
         return board;
     }
 
-    public Piece getPiece(int cordX, int cordY) {
-        Piece movement;
-        movement = board[cordX][cordY];
-        return movement;
-    }
-
-    public void idetifyPiece(int cordX, int cordY) {
+    /*public void idetifyPiece(int cordX, int cordY, double color) {
         Piece type;
         type = getPiece(cordX, cordY);
         switch (type.getName()) {
             case "T":
                 Rook newRook = new Rook();
-                newRook.movePiece(cordX, cordY);
+                newRook.movePiece(cordX, cordY, color);
                 break;
             case "A":
                 Bishop newBishop = new Bishop();
-                newBishop.movePiece(cordX, cordY);
+                newBishop.movePiece(cordX, cordY, color);
                 break;
             case "C":
                 Knight newKnight = new Knight();
-                newKnight.movePiece(cordX, cordY);
+                newKnight.movePiece(cordX, cordY, color);
                 break;
             case "Q":
                 Queen newQueen = new Queen();
-                newQueen.movePiece(cordX, cordY);
+                newQueen.movePiece(cordX, cordY, color);
                 break;
             case "K":
                 King newKing = new King();
-                newKing.movePiece(cordX, cordY);
+                newKing.movePiece(cordX, cordY, color);
                 break;
             case "P":
                 Pawn newPawn = new Pawn();
-                newPawn.movePiece(cordX, cordY);
+                newPawn.movePiece(cordX, cordY, color);
                 break;
         }
-    }
+    }*/
 
     public Piece[][] getBoard() {
         return board;

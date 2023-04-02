@@ -8,8 +8,7 @@ public class Knight extends Piece{
     }
     public Knight(){}
 
-    @Override
-    public int movePiece(int ubicationX, int ubicationY) {
+    public int movePiece(int cordX, int cordY, double color) {
         return 0;
     }
 

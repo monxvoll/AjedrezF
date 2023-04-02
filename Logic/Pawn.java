@@ -11,7 +11,7 @@ public class Pawn extends Piece{
 
     }
     @Override
-    public int movePiece(int corX , int CorY ) {
+    public int movePiece(int corX , int CorY, Boolean color ) {
         Board board = new Board();
         Piece[][] boardDos = new Piece[9][9];
         boardDos = board.getBoard();

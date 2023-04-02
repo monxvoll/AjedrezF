@@ -9,7 +9,7 @@ public class King extends Piece  {
 
 
     @Override
-    public int movePiece(int ubicationX, int ubicationY) {
+    public int movePiece(int ubicationX, int ubicationY, Boolean color) {
         return 0;
     }
 }

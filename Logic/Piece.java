@@ -1,6 +1,6 @@
 package Logic;
 
-public abstract class Piece {
+public abstract class Piece implements Moveable {
     //Cuando la ficha es blanca la variable es true
     protected boolean color = true;
     //EL nombre es el mismo tipo de ficha
@@ -47,9 +47,6 @@ public abstract class Piece {
     public void setUbicationY(int ubicationY){
         this.ubicationY = ubicationY;
     }
-
-    //Metodo
-    public abstract int movePiece(int ubicationX, int ubicationY);
 
     public  void recieveCords ( int cordX , int cordY){
         Board board = new Board();
