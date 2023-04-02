@@ -5,6 +5,7 @@ presentado a : Ing.Ivan Leal siuuuuuuuuuuu
 
 En que consiste el proyecto:
 El proyecto consiste en un ajedren funcional
+
 comandos usados
 git
 
