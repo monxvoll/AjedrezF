@@ -10,7 +10,12 @@ public abstract class Piece {
     //Ubicacion en la matriz, eje x
     protected int ubicationY = 0;
 
+    protected  int motionType = 0;
+
+
+
     //Getters
+    public int  getMotionType(){return  motionType;}
     public boolean getColor(){
         return color;
     }
@@ -26,6 +31,10 @@ public abstract class Piece {
 
 
     //Setters
+    public  void setMotionType(int motionType) {
+        this.motionType = motionType;
+    }
+
     public void setColor(boolean color){
         this. color = color;
     }
@@ -40,7 +49,12 @@ public abstract class Piece {
     }
 
     //Metodo
-    public abstract int movePiece();
+    public abstract int movePiece(int ubicationX, int ubicationY);
+
+    public  void recieveCords ( int cordX , int cordY){
+        Board board = new Board();
+        board.getBoard();
+    }
 
     //Constructor
     public Piece(boolean color, String name, int ubicationX, int ubicationY) {
@@ -50,6 +64,7 @@ public abstract class Piece {
         this.ubicationY = ubicationY;
 
     }
+
     public Piece() {
     }
 }
