@@ -116,22 +116,22 @@ public class Board {
         tablero.AssingnsPawns(pieza);
         tablero.AssingnKings(pieza);
         char c = 'A';
-            for (int i = 0; i < 9; i++){
-                System.out.print(i);
-                for (int j = 0; j < 9 ; j++){
-                    if(pieza[j][i] != null) {
+        for (int i = 0; i < 9; i++){
+            System.out.print(i);
+            for (int j = 0; j < 9 ; j++){
+                if(pieza[j][i] != null) {
 
-                        System.out.print(pieza[j][i].getName()+"\t");
-                    } else if (j==0) {
-                        System.out.print("\t");
-                    } else if (i==0) {
-                        System.out.print(c+"\t");
-                        c=++c;
-                    } else {
-                        System.out.print("-\t");
-                    }
+                    System.out.print(pieza[j][i].getName()+"\t");
+                } else if (j==0) {
+                    System.out.print("\t");
+                } else if (i==0) {
+                    System.out.print(c+"\t");
+                    c=++c;
+                } else {
+                    System.out.print("-\t");
                 }
-                System.out.println();
             }
+            System.out.println();
+        }
     }
 }
