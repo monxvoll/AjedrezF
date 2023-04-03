@@ -23,7 +23,7 @@ public class ControllerA {
             // manejar el caso en que no hay pieza en la coordenada especificada
             return;
         }
-    
+
         Piece type = null;
         switch (piece.getName()) {
             case "T":
@@ -48,9 +48,9 @@ public class ControllerA {
                 // manejar el caso en que no se encuentra la pieza correspondiente en el arreglo
                 break;
         }
-        
+
         if (type != null) {
-            type.movePiece(cordX, cordY, color);
+            type.movePiece(cordX, cordY, color );
             boardInstance.getBoard()[cordX][cordY] = type;
         }
     }

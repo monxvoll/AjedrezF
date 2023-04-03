@@ -8,9 +8,9 @@ public class Knight extends Piece{
     }
     public Knight(){}
 
-    public int movePiece(int cordX, int cordY, double color) {
-        return 0;
+
+    @Override
+    public void movePiece(int corX, int corY, Boolean color ) {
+
     }
-
-
 }
