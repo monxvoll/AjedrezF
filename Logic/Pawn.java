@@ -22,16 +22,16 @@ public class Pawn extends Piece {
             System.out.println("Movimiento invalido");
             return;
         }
-         specialMovement(corX , corY ,color);
 
         //si el peon es true(blanco) mueve abajo de lo contrario ( negro) mueve arriba
         if (color) {
             this.ubicationY = corY + enterCordY ;
+            this.ubicationX = corX ;
         } else {
             this.ubicationY = corY - enterCordY;
+            this.ubicationX = corX ;
         }
 
-        killerMove(corX , corY ,color);
 
         //No devuelve el tablero ya que eso se hace en el identificador
     }
