@@ -23,13 +23,13 @@ public class Pawn extends Piece {
             return;
         }
 
-        //si el peon es true(blanco) mueve abajo de lo contrario ( negro) mueve arriba
+        //actualiza las anteriores posiciones con las nuevas
         if (color) {
-            this.ubicationY = corY + enterCordY ;
-            this.ubicationX = corX ;
+            this.ubicationY = enterCordY ;
+            this.ubicationX = enterCordX ;
         } else {
-            this.ubicationY = corY - enterCordY;
-            this.ubicationX = corX ;
+            this.ubicationY = enterCordY;
+            this.ubicationX = enterCordX ;
         }
 
 

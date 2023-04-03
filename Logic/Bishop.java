@@ -11,5 +11,6 @@ public class Bishop extends Piece{
 
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
+
     }
 }
