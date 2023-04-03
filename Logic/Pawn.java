@@ -30,6 +30,9 @@ public class Pawn extends Piece {
         } else {
             this.ubicationY = corY - enterCordY;
         }
+
+        killerMove(corX , corY ,color);
+
         //No devuelve el tablero ya que eso se hace en el identificador
     }
 
@@ -44,14 +47,18 @@ public class Pawn extends Piece {
         //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
         } else if (  board.getBoard()[cordX][this.ubicationY +cordY] != null){
             return  false;
-            //verifica que el peon no se mueva diagonalmente si no hay una pieza del color opuesto
-        } else if (cordX == this.ubicationX - 1 || cordX == this.ubicationX + 1 &&
-                board.getBoard()[cordX][this.ubicationY + cordY] == null ||
-                board.getBoard()[cordX][this.ubicationY + cordY].getColor() == this.color) {
-            return false;
         }
         return  true;
 
+    }
+    //El peon no se movera diagonalmente si no hay una pieza del color opuesto
+    public void killerMove(int cordX, int cordY, boolean color){
+        Board board = new Board();
+        if (cordX == this.ubicationX - 1 || cordX == this.ubicationX + 1 &&
+                board.getBoard()[cordX][this.ubicationY + cordY] == null ||
+                board.getBoard()[cordX][this.ubicationY + cordY].getColor() == this.color){
+        }
+        //No devuelve el tablero ya que eso se hace en el identificador
     }
 
 
