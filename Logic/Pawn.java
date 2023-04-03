@@ -15,7 +15,8 @@ public class Pawn extends Piece {
 
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
-        int enterCordY = 0; //cantidad de cuadros que se   desea mover en Y al peon
+        int enterCordY = 0; //coordenada en Y a donde se movera el peon
+        int enterCordX = 0; //coordenada en X a donde se movera el peon
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX ,corY ,color) == false) {
             System.out.println("Movimiento invalido");
@@ -25,7 +26,7 @@ public class Pawn extends Piece {
 
         //si el peon es true(blanco) mueve abajo de lo contrario ( negro) mueve arriba
         if (color) {
-            this.ubicationY = corY + enterCordY;
+            this.ubicationY = corY + enterCordY ;
         } else {
             this.ubicationY = corY - enterCordY;
         }
@@ -35,12 +36,12 @@ public class Pawn extends Piece {
     public  boolean  verifyMovement(int cordX, int cordY, boolean color){
         Board board = new Board();
         //verifica que las nuevas posiciones  no muevan el peon abajo si es negro o arriba si es blanco
-        if (color && cordY <=this.ubicationY || color == false && cordX >= this.ubicationX){
+        if (color && cordY <=this.ubicationY || color == false && cordX >= this.ubicationY){
             return false;
         //verifica que cuando el peon esta en la ubicacion inicial no se mueva mas de 2 cuadros dependiendo su color
-        }else if (color && ubicationY == 2 && cordY >4 || color ==false && ubicationY == 7 && cordY < 5){
-            return  false;
-            //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
+        }else if (color && ubicationY == 2 && cordY >4 || color ==false && ubicationY == 7 && cordY < 5) {
+            return false;
+        //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
         } else if (  board.getBoard()[cordX][this.ubicationY +cordY] != null){
             return  false;
         }
