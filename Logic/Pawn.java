@@ -44,6 +44,11 @@ public class Pawn extends Piece {
         //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
         } else if (  board.getBoard()[cordX][this.ubicationY +cordY] != null){
             return  false;
+            //verifica que el peon no se mueva diagonalmente si no hay una pieza del color opuesto
+        } else if (cordX == this.ubicationX - 1 || cordX == this.ubicationX + 1 &&
+                board.getBoard()[cordX][this.ubicationY + cordY] == null ||
+                board.getBoard()[cordX][this.ubicationY + cordY].getColor() == this.color) {
+            return false;
         }
         return  true;
 
