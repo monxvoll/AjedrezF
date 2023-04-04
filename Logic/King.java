@@ -32,7 +32,7 @@ public class King extends Piece  {
         }
 
         // Verifica que el rey no se mueva mas de una casilla
-        //se restan las posiciones actuaesl y nuevavas en X y en Y para que esa resta solo sea 1
+        //se restan las posiciones actuales y nuevas en X y en Y para que esa resta solo sea 1
         int actualMenosNuevaPosX = cordX - this.ubicationX;
         int actualMenosNuevaPosY = cordY - this.ubicationY;
 
