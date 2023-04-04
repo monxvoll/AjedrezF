@@ -18,21 +18,13 @@ public class Pawn extends Piece {
         int enterCordY = 0; //coordenada en Y a donde se movera el peon
         int enterCordX = 0; //coordenada en X a donde se movera el peon
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
-        if (verifyMovement(corX ,corY ,color) == false) {
+        if (verifyMovement(enterCordY ,enterCordX ,color) == false) {
             System.out.println("Movimiento invalido");
             return;
         }
-
         //actualiza las anteriores posiciones con las nuevas
-        if (color) {
             this.ubicationY = enterCordY ;
             this.ubicationX = enterCordX ;
-        } else {
-            this.ubicationY = enterCordY;
-            this.ubicationX = enterCordX ;
-        }
-
-
         //No devuelve el tablero ya que eso se hace en el identificador
     }
 
@@ -45,9 +37,13 @@ public class Pawn extends Piece {
         }else if (color && ubicationY == 2 && cordY >4 || color ==false && ubicationY == 7 && cordY < 5) {
             return false;
         //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
-        } else if (  board.getBoard()[cordX][this.ubicationY +cordY] != null){
+        } else if (  board.getBoard()[cordX][+cordY] != null){
             return  false;
+            // Verifica que el peon no se salga del tablero
+        }else if (cordX < 0 || cordX > 7 || cordY < 0 || cordY > 7) {
+            return false;
         }
+
         return  true;
 
     }
@@ -58,6 +54,8 @@ public class Pawn extends Piece {
                 board.getBoard()[cordX][this.ubicationY + cordY] == null ||
                 board.getBoard()[cordX][this.ubicationY + cordY].getColor() == this.color){
         }
+        this.ubicationY = cordY;
+        this.ubicationX = cordX;
         //No devuelve el tablero ya que eso se hace en el identificador
     }
 
