@@ -15,10 +15,10 @@ public class Pawn extends Piece {
 
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
-        int enterCordY = 0; //coordenada en Y a donde se movera el peon
         int enterCordX = 0; //coordenada en X a donde se movera el peon
+        int enterCordY = 0; //coordenada en Y a donde se movera el peon
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
-        if (verifyMovement(enterCordY ,enterCordX ,color) == false) {
+        if (verifyMovement(enterCordX ,enterCordY ,color) == false) {
             System.out.println("Movimiento invalido");
             return;
         }
