@@ -27,7 +27,7 @@ public class King extends Piece  {
         Board board = new Board();
 
         // Verifica que el rey no se salga del tablero
-        if (cordX < 0 || cordX > 7 || cordY < 0 || cordY > 7) {
+        if (cordX < 0 || cordX > 9 || cordY < 0 || cordY > 9) {
             return false;
         }
 

@@ -86,6 +86,13 @@ public class Board {
         }
     }*/
 
+    public Piece getPiece(int x, int y) {
+        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
+            return null;
+        }
+        return board[x][y];
+    }
+    
     public Piece[][] getBoard() {
         return board;
     }
@@ -106,7 +113,8 @@ public class Board {
 
     public static void main(String[] args) {
 
-        Board tablero = new Board();
+        
+        /*Board tablero = new Board();
         Piece[][] pieza = new Piece[9][9];
 
         tablero.AssingnsRooks(pieza);
@@ -132,6 +140,6 @@ public class Board {
                 }
             }
             System.out.println();
-        }
+        }*/
     }
 }

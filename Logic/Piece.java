@@ -9,10 +9,20 @@ public abstract class Piece implements Moveable {
     protected int ubicationX = 0;
     //Ubicacion en la matriz, eje x
     protected int ubicationY = 0;
-
     protected  int motionType = 0;
 
-
+    //Metodos Principales
+    public  void recieveCords ( int cordX , int cordY){
+        Board board = new Board();
+        board.getBoard();
+    }
+    public boolean verifyRange(int corX, int corY){
+        if(corX<9 && corX>0 && corY<9 && corY>0){
+            return true;
+        }
+        return false;
+    }
+    
 
     //Getters
     public int  getMotionType(){return  motionType;}
@@ -46,11 +56,6 @@ public abstract class Piece implements Moveable {
     }
     public void setUbicationY(int ubicationY){
         this.ubicationY = ubicationY;
-    }
-
-    public  void recieveCords ( int cordX , int cordY){
-        Board board = new Board();
-        board.getBoard();
     }
 
     //Constructor
