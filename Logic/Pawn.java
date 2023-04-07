@@ -10,22 +10,26 @@ public class Pawn extends Piece {
     public Pawn() {
 
     }
+     Board board = new Board();
 
 
 
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
-        int enterCordX = 0; //coordenada en X a donde se movera el peon
-        int enterCordY = 0; //coordenada en Y a donde se movera el peon
+
+
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
-        if (verifyMovement(enterCordX ,enterCordY ,color) == false) {
+        if (verifyMovement(corX ,corY ,color) == false) {
             System.out.println("Movimiento invalido");
             return;
         }
+
         //actualiza las anteriores posiciones con las nuevas
-            this.ubicationY = enterCordY ;
-            this.ubicationX = enterCordX ;
+            this.ubicationX = corX ;
+            this.ubicationY = corY ;
+
         //No devuelve el tablero ya que eso se hace en el identificador
+        board.getBoard()[corX][corY] = new Pawn();
     }
 
     public  boolean  verifyMovement(int cordX, int cordY, boolean color){
@@ -37,7 +41,7 @@ public class Pawn extends Piece {
         }else if (color && ubicationY == 2 && cordY >4 || color ==false && ubicationY == 7 && cordY < 5) {
             return false;
         //verifica que la posicion a donde se quiere mover el peon este vacia , si no es asi no se movera
-        } else if (  board.getBoard()[cordX][+cordY] != null){
+        } else if (  board.getBoard()[cordX][cordY] != null){
             return  false;
             // Verifica que el peon no se salga del tablero
         }else if (cordX < 0 || cordX > 7 || cordY < 0 || cordY > 7) {
@@ -51,8 +55,8 @@ public class Pawn extends Piece {
     public void killerMove(int cordX, int cordY, boolean color){
         Board board = new Board();
         if (cordX == this.ubicationX - 1 || cordX == this.ubicationX + 1 &&
-                board.getBoard()[cordX][this.ubicationY + cordY] == null ||
-                board.getBoard()[cordX][this.ubicationY + cordY].getColor() == this.color){
+                board.getBoard()[cordX][this.ubicationY = cordY] == null ||
+                board.getBoard()[cordX][this.ubicationY = cordY].getColor() == this.color){
         }
         this.ubicationY = cordY;
         this.ubicationX = cordX;
