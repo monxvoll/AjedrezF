@@ -10,13 +10,13 @@ public class Pawn extends Piece {
     public Pawn() {
 
     }
-     Board board = new Board();
+
 
 
 
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
-
+        Board board = new Board();
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX ,corY ,color) == false) {

@@ -10,7 +10,9 @@ import Logic.Queen;
 import Logic.Rook;
 
 public class ControllerA {
-    private Board boardInstance;
+    private Board boardInstance = new Board();
+
+    private Piece piece;
 
     private  static boolean color ;
 
@@ -22,31 +24,36 @@ public class ControllerA {
         return movement;
     }
 
-    public String  verifyData(String cordX , String cordY){
 
-        int corddX;
-        int corddY;
+
+    public String  verifyData(String cordX , String cordY , String newCordX , String newCordY){
+
+        int corddX = 0;
+        int corddY = 0;
+        int newCorddX= 0;
+        int newCorddY = 0;
         try{
             corddX = Integer.parseInt(cordX);
             corddY = Integer.parseInt(cordY);
+            newCorddX = Integer.parseInt(newCordX);
+            newCorddY = Integer.parseInt(newCordY);
 
         }catch (NumberFormatException e){
             return "El tipo de dato ingresado no es valido";
         }
         turn();
-        int color = getTurn();
-        boolean colorZ;
-        if(color == 0){
-            colorZ = true;
-        }else {
-            colorZ = false;
-        }
 
+        identifyPiece(corddX,corddY,color,newCorddX,newCorddY);
         return "Impriendo";
     }
 
     public void turn (){
-        turn = (turn + 1)%2;
+         turn = (turn + 1)%2;
+       if (turn == 1){
+           this.color =false;
+       } else {
+           this.color =true;
+       }
     }
     public int getTurn(){
         return turn;
@@ -85,11 +92,14 @@ public class ControllerA {
         }
 
         if (type != null) {
-            type.movePiece(newCordX, newCordY, color );
-            boardInstance.getBoard()[newCordX][newCordY] = type;
-            boardInstance.getBoard()[cordX][cordY] = null;
+           //if (type.getColor() == color) {
+                System.out.println(type.getColor());
+                type.movePiece(newCordX, newCordY, color);
+                boardInstance.getBoard()[newCordX][newCordY] = type;
+                boardInstance.getBoard()[cordX][cordY] = null;
+            }
+
+
         }
+
     }
-
-
-}

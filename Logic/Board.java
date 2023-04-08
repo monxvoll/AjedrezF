@@ -94,6 +94,7 @@ public class Board {
     }
     
     public Piece[][] getBoard() {
+
         return board;
     }
 
