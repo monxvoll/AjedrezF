@@ -24,8 +24,8 @@ public class ControllerA {
 
     public String  verifyData(String cordX , String cordY){
 
-        int corddX = 0;
-        int corddY = 0;
+        int corddX;
+        int corddY;
         try{
             corddX = Integer.parseInt(cordX);
             corddY = Integer.parseInt(cordY);
