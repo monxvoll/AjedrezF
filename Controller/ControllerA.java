@@ -92,14 +92,13 @@ public class ControllerA {
         }
 
         if (type != null) {
-           //if (type.getColor() == color) {
+            //if (type.getColor() == color) {
+            if (type.movePiece(newCordX, newCordY, color)) {
                 System.out.println(type.getColor());
-                type.movePiece(newCordX, newCordY, color);
                 boardInstance.getBoard()[newCordX][newCordY] = type;
                 boardInstance.getBoard()[cordX][cordY] = null;
             }
 
-
         }
-
     }
+}

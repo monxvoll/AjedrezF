@@ -15,13 +15,13 @@ public class Pawn extends Piece {
 
 
     @Override
-    public void movePiece(int corX, int corY, Boolean color ) {
+    public boolean movePiece(int corX, int corY, Boolean color ) {
         Board board = new Board();
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX ,corY ,color) == false) {
             System.out.println("Movimiento invalido");
-            return;
+            return false;
         }
 
         //actualiza las anteriores posiciones con las nuevas
@@ -29,7 +29,7 @@ public class Pawn extends Piece {
             this.ubicationY = corY ;
 
         //No devuelve el tablero ya que eso se hace en el identificador
-
+        return true;
     }
 
     public  boolean  verifyMovement(int cordX, int cordY, boolean color){
@@ -45,7 +45,8 @@ public class Pawn extends Piece {
         }else if (color && ubicationY == 2 && cordY >4 || color ==false && ubicationY == 7 && cordY < 5) {
             return false;
             // Verifica que el peon no se salga del tablero
-        }else if (cordX < 0 || cordX > 8 || cordY < 0 || cordY > 8) {
+        } else if (verifyRange(cordX,cordY) != true) {
+
             return false;
         }
 

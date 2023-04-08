@@ -18,7 +18,7 @@ public class Rook extends Piece{
 
     //Mover General
     @Override
-    public void movePiece(int corX, int corY, Boolean color ) {
+    public boolean movePiece(int corX, int corY, Boolean color ) {
         Piece[][] board = boardInstance.getBoard();
 
         if(color){
@@ -35,6 +35,7 @@ public class Rook extends Piece{
         }else{
 
         }
+        return  true;
     }
     //Espacios hacia adelante
     public int recognizeSpacesA(int corX, int corY){

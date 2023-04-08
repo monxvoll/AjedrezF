@@ -13,7 +13,7 @@ public class Queen extends Piece {
 
     @Override
 
-    public void movePiece(int corX, int corY, Boolean color ) {
-
+    public boolean movePiece(int corX, int corY, Boolean color ) {
+        return  true;
     }
 }

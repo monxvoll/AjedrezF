@@ -12,13 +12,13 @@ public class Knight extends Piece {
 
 
     @Override
-    public void movePiece(int corX, int corY, Boolean color) {
+    public boolean movePiece(int corX, int corY, Boolean color) {
 
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX, corY, color) == false) {
             System.out.println("Movimiento invalido");
-            return;
+            return false;
         }
 
         //actualiza las anteriores posiciones con las nuevas
@@ -26,6 +26,7 @@ public class Knight extends Piece {
         this.ubicationY = corY;
 
         //No devuelve el tablero ya que eso se hace en el identificador
+        return  true;
     }
 
     public boolean verifyMovement(int cordX, int cordY, boolean color) {

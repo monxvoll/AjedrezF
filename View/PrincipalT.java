@@ -42,7 +42,6 @@ public class PrincipalT  {
             String newCordX = scanner.nextLine();
             System.out.println("Ingrese la coordenada en Y a la que desea mover la pieza");
             String newCordY = scanner.nextLine();
-
             //se llama al metodo verificar datos
             control.verifyData(cordX, cordY, newCordX, newCordY);
         }while (1<2);

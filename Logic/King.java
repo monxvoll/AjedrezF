@@ -9,18 +9,19 @@ public class King extends Piece {
     }
 
 
-    public void movePiece(int corX, int corY, Boolean color) {
+    public boolean movePiece(int corX, int corY, Boolean color) {
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (!verifyMovement(corX, corY, color)) {
             System.out.println("Movimiento inválido");
-            return;
+            return false;
         }
         // Actualiza las anteriores posiciones con las nuevas
         this.ubicationX = corX;
         this.ubicationY = corY;
 
         //No devuelve el tablero ya que eso se hace en el identificador
+        return  true;
     }
 
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
