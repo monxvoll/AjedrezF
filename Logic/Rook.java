@@ -2,8 +2,7 @@ package Logic;
 
 public class Rook extends Piece{
     //Instancia para acceder a Board arreglo
-    Board boardInstance = new Board();
-    private Piece[][] board = boardInstance.getBoard();
+    Board boardInstance ;
 
     //Instancia de Piece
     Piece whichPiece;
@@ -20,6 +19,8 @@ public class Rook extends Piece{
     //Mover General
     @Override
     public void movePiece(int corX, int corY, Boolean color ) {
+        Piece[][] board = boardInstance.getBoard();
+
         if(color){
             if(verifyRange(corX, corY)){
             
@@ -37,6 +38,8 @@ public class Rook extends Piece{
     }
     //Espacios hacia adelante
     public int recognizeSpacesA(int corX, int corY){
+        Piece[][] board = boardInstance.getBoard();
+
         int verify = board.length-1;
         int obstacle = -1;
 
@@ -52,6 +55,8 @@ public class Rook extends Piece{
     }
     //Espacios hacia atras
     public int recognizeSpacesAt(int corX, int corY){
+        Piece[][] board = boardInstance.getBoard();
+
         int verify = board.length-1;
         int obstacle = -1;
 
@@ -67,6 +72,8 @@ public class Rook extends Piece{
     }
     //Espacios hacia la izquierda
     public int recognizeSpacesLe(int corX, int corY){
+        Piece[][] board = boardInstance.getBoard();
+
         int verify = board.length-1;
         int obstacle = -1;
 
@@ -82,6 +89,8 @@ public class Rook extends Piece{
     }
     //Espacios hacia la derecha
     public int recognizeSpacesRi(int corX, int corY){
+        Piece[][] board = boardInstance.getBoard();
+
         int verify = board.length-1;
         int obstacle = -1;
         //Reconocer hacia derecha
