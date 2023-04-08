@@ -24,9 +24,12 @@ public class Rook extends Piece{
         if(color){
             if(verifyRange(corX, corY)){
             
-                if(recognizeSpacesA(corX, corY) != -1){
-                    int cordX = recognizeSpacesA(corX, corY);
-                    Piece piece = boardInstance.getPiece(cordX, corY); 
+                if(recognizeSpacesA(corX, corY) != -1||recognizeSpacesAt(corX, corY) != -1||recognizeSpacesLe(corX, corY) != -1|| recognizeSpacesRi(corX, corY) != -1){
+                    int cordA = recognizeSpacesA(corX, corY);
+                    int cordAt = recognizeSpacesAt(corX, corY);
+                    int cordLe = recognizeSpacesLe(corX, corY);
+                    int cordRi = recognizeSpacesRi(corX, corY);
+                    Piece piece = boardInstance.getPiece(cordA, corY); 
                     boolean colorInterference = piece.getColor();
                 }
             }else{
@@ -63,7 +66,7 @@ public class Rook extends Piece{
 
         //Reconocer hacia atras
         while(corX<=verify){
-            if(board[corX][corY] != null && corX<verify){
+            if(board[corX][corY] != null || corX<verify){
                 obstacle = corX;
                 break;
             }
