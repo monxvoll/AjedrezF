@@ -55,36 +55,6 @@ public class Board {
         return board;
     }
 
-    /*public void idetifyPiece(int cordX, int cordY, double color) {
-        Piece type;
-        type = getPiece(cordX, cordY);
-        switch (type.getName()) {
-            case "T":
-                Rook newRook = new Rook();
-                newRook.movePiece(cordX, cordY, color);
-                break;
-            case "A":
-                Bishop newBishop = new Bishop();
-                newBishop.movePiece(cordX, cordY, color);
-                break;
-            case "C":
-                Knight newKnight = new Knight();
-                newKnight.movePiece(cordX, cordY, color);
-                break;
-            case "Q":
-                Queen newQueen = new Queen();
-                newQueen.movePiece(cordX, cordY, color);
-                break;
-            case "K":
-                King newKing = new King();
-                newKing.movePiece(cordX, cordY, color);
-                break;
-            case "P":
-                Pawn newPawn = new Pawn();
-                newPawn.movePiece(cordX, cordY, color);
-                break;
-        }
-    }*/
 
     public Piece getPiece(int x, int y) {
         if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
@@ -94,7 +64,6 @@ public class Board {
     }
     
     public Piece[][] getBoard() {
-
         return board;
     }
 
@@ -112,6 +81,26 @@ public class Board {
         AssingnsRooks(board);
     }
 
+    //Metodo mover pieza
+    public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color){
+        if (type != null) {
+            if (type.getColor() != color) {
+                System.out.println("No es el turno del jugador");
+                return null;
+            }
+    
+            if (type.movePiece(newCordX, newCordY, color)) {
+                System.out.println("Turno: "+type.getColor());
+                System.out.println("Pieza identificada: " + type.getName());
+                System.out.println("Coordenada de la pieza x: "+ cordX+" y: "+cordY);
+                System.out.println("Coordenada de la pieza en su nueva ubicacionx: "+ newCordX+" y: "+newCordY);
+                getBoard()[newCordX][newCordY] = type;
+                getBoard()[cordX][cordY] = null;
+            }
+    
+        }
+        return getBoard();
+    }
     public static void main(String[] args) {
 
         

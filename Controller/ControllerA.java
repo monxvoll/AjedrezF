@@ -14,7 +14,7 @@ public class ControllerA {
 
     private Piece piece;
 
-    private  static boolean color ;
+    private boolean color = true;
 
     private int turn = 0;
 
@@ -24,15 +24,15 @@ public class ControllerA {
         return movement;
     }
 
-
-
-    public String  verifyData(String cordX , String cordY , String newCordX , String newCordY){
+    public String verifyData(String cordX , String cordY , String newCordX , String newCordY){
 
         int corddX = 0;
         int corddY = 0;
         int newCorddX= 0;
         int newCorddY = 0;
+
         try{
+
             corddX = Integer.parseInt(cordX);
             corddY = Integer.parseInt(cordY);
             newCorddX = Integer.parseInt(newCordX);
@@ -41,22 +41,17 @@ public class ControllerA {
         }catch (NumberFormatException e){
             return "El tipo de dato ingresado no es valido";
         }
-        turn();
-
+        
         identifyPiece(corddX,corddY,color,newCorddX,newCorddY);
-        return "Impriendo";
+        return "Validando datos...";
     }
 
     public void turn (){
          turn = (turn + 1)%2;
-       if (turn == 1){
-           this.color =false;
-       } else {
-           this.color =true;
-       }
+         color = turn == 0;
     }
-    public int getTurn(){
-        return turn;
+    public boolean getColor(){
+        return color;
     }
 
     public void identifyPiece(int cordX, int cordY, Boolean color, int newCordX, int newCordY) {
@@ -65,6 +60,9 @@ public class ControllerA {
             System.out.println("Digite un espacio valido"); // manejar el caso en que no hay pieza en la coordenada especificada
             return;
         }
+
+        //Si hay un espacio valido se incrementa el turno
+        turn();
 
         Piece type = null;
         switch (piece.getName()) {
@@ -90,15 +88,21 @@ public class ControllerA {
                 System.out.println("Pieza inexistente"); // manejar el caso en que no se encuentra la pieza correspondiente en el arreglo
                 break;
         }
-
-        if (type != null) {
-            //if (type.getColor() == color) {
-            if (type.movePiece(newCordX, newCordY, color)) {
-                System.out.println(type.getColor());
-                boardInstance.getBoard()[newCordX][newCordY] = type;
-                boardInstance.getBoard()[cordX][cordY] = null;
-            }
-
-        }
+        boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, color);
+        
+        
     }
+
+        //return newBoardPieces;
+        public Piece[][] getBoardPiecess(int cordX, int cordY, int newCordX, int newCordY, Piece piece, boolean color){
+            
+            Piece[][] boardPieces = boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, getColor());
+
+            return boardPieces;
+        }
+
+        public Piece[][] getBoardPieces(){
+            Piece[][] boardPieces = boardInstance.getBoard();
+            return boardPieces;
+        }
 }
