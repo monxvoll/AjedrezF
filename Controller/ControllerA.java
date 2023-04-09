@@ -90,14 +90,11 @@ public class ControllerA {
         }
         boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, color);
         
-        
     }
 
         //return newBoardPieces;
         public Piece[][] getBoardPiecess(int cordX, int cordY, int newCordX, int newCordY, Piece piece, boolean color){
-            
             Piece[][] boardPieces = boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, getColor());
-
             return boardPieces;
         }
 

@@ -17,14 +17,16 @@ public class PrincipalT  {
 
         //Impresion de tablero
         do {
-            tablero.printBoard();
+            tablero.printBoard(control.getBoardPieces());
             //Se piden datos
             System.out.println("Bienvenido a Ajedrez");
             System.out.println("Seleccione una pieza usando sus coordenadas");
+
             System.out.print("Por favor ingrese ... \nCoordenada en X : ");
             String cordX = scanner.nextLine();
             System.out.print("Por favor ingrese... \nCoordenada en Y : ");
             String cordY = scanner.nextLine();
+
             System.out.print("Ingrese la coordenada en X a la que desea mover la pieza: ");
             String newCordX = scanner.nextLine();
             System.out.print("Ingrese la coordenada en Y a la que desea mover la pieza: ");
@@ -36,15 +38,14 @@ public class PrincipalT  {
         }while (true);
     }
 
-    public void printBoard() {
-        ControllerA board = new ControllerA();
-        Piece[][] boardA = board.getBoardPieces();
+    public void printBoard(Piece[][] board) {
+
         char c = 'A';
-        for (int i = 0; i < boardA.length; i++){
+        for (int i = 0; i < board.length; i++){
             System.out.print(i);
-            for (int j = 0; j < boardA[i].length ; j++){
-                if(boardA[j][i] != null) {
-                    System.out.print(boardA[j][i].getName()+"\t");
+            for (int j = 0; j < board[i].length ; j++){
+                if(board[j][i] != null) {
+                    System.out.print(board[j][i].getName()+"\t");
                 } else if (j==0) {
                     System.out.print("\t");
                 } else if (i==0) {

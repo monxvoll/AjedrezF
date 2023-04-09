@@ -62,7 +62,6 @@ public class Board {
         }
         return board[x][y];
     }
-    
     public Piece[][] getBoard() {
         return board;
     }
@@ -80,9 +79,11 @@ public class Board {
         AssingnsPawns(board);
         AssingnsRooks(board);
     }
+    
 
     //Metodo mover pieza
     public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color){
+        Piece[][]boards = new Piece[9][9];
         if (type != null) {
             if (type.getColor() != color) {
                 System.out.println("No es el turno del jugador");
@@ -94,42 +95,15 @@ public class Board {
                 System.out.println("Pieza identificada: " + type.getName());
                 System.out.println("Coordenada de la pieza x: "+ cordX+" y: "+cordY);
                 System.out.println("Coordenada de la pieza en su nueva ubicacionx: "+ newCordX+" y: "+newCordY);
-                getBoard()[newCordX][newCordY] = type;
-                getBoard()[cordX][cordY] = null;
+                boards = getBoard();
+                boards[newCordX][newCordY] = type;
+                boards[cordX][cordY] = null;
+                setBoard(boards);
             }
     
         }
+        
         return getBoard();
     }
-    public static void main(String[] args) {
 
-        
-        /*Board tablero = new Board();
-        Piece[][] pieza = new Piece[9][9];
-
-        tablero.AssingnsRooks(pieza);
-        tablero.AssingnsBishops(pieza);
-        tablero.AssingnQueen(pieza);
-        tablero.AssingnsKnight(pieza);
-        tablero.AssingnsPawns(pieza);
-        tablero.AssingnKings(pieza);
-        char c = 'A';
-        for (int i = 0; i < 9; i++){
-            System.out.print(i);
-            for (int j = 0; j < 9 ; j++){
-                if(pieza[j][i] != null) {
-
-                    System.out.print(pieza[j][i].getName()+"\t");
-                } else if (j==0) {
-                    System.out.print("\t");
-                } else if (i==0) {
-                    System.out.print(c+"\t");
-                    c=++c;
-                } else {
-                    System.out.print("-\t");
-                }
-            }
-            System.out.println();
-        }*/
-    }
 }
