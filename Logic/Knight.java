@@ -45,6 +45,9 @@ public class Knight extends Piece {
                     (actualMenosNuevaPosX == 2 && actualMenosNuevaPosY == -1) ||
                     (actualMenosNuevaPosX == -2 && actualMenosNuevaPosY == 1)) {
                 return true;
+            }else if (verifyRange(cordX,cordY) != true) {
+
+                return false;
             }else {
                 return  false;
             }

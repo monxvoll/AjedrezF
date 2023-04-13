@@ -32,7 +32,8 @@ public class King extends Piece {
         }
 
         // Verifica que el rey no se salga del tablero
-        if (cordX < 0 || cordX > 9 || cordY < 0 || cordY > 9) {
+         if (verifyRange(cordX,cordY) != true) {
+
             return false;
         }
 

@@ -9,7 +9,7 @@ public class PrincipalT  {
         //Instancias
         ControllerA control = new ControllerA();
         PrincipalT tablero = new PrincipalT();
-       
+
         Scanner scanner = new Scanner(System.in);
 
         //Variables
@@ -34,7 +34,6 @@ public class PrincipalT  {
 
             //se llama al metodo verificar datos
             System.out.println(control.verifyData(cordX, cordY, newCordX, newCordY));
-            
         }while (true);
     }
 

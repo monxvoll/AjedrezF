@@ -5,6 +5,12 @@ public class Board {
 
     private Piece[][] board;
 
+    private boolean color = true;
+
+    private int turn = 0;
+
+    private Piece piece;
+
     //Queens
     public Piece[][] AssingnQueen(Piece[][] board) {
         board[5][1] = new Queen(true, "Q", 5, 1);
@@ -39,7 +45,7 @@ public class Board {
 
     //Bishops, Alfil
     public Piece[][] AssingnsBishops(Piece[][] board) {
-        board[3][1] = new Bishop(true, "A", 4, 1);
+        board[3][1] = new Bishop(true, "A", 3, 1);
         board[6][1] = new Bishop(true, "A", 6, 1);
         board[3][8] = new Bishop(false, "A", 3, 8);
         board[6][8] = new Bishop(false, "A", 6, 8);
@@ -70,6 +76,19 @@ public class Board {
         this.board = board;
     }
 
+    public void setColor(boolean color){
+        this.color=color;
+    }
+
+    public boolean getColor(){
+        return color;
+    }
+    public void turn (){
+        turn = (turn + 1)%2;
+        color = turn == 0;
+    }
+
+
     public Board() {
         board = new Piece[9][9];
         AssingnKings(board);
@@ -79,17 +98,23 @@ public class Board {
         AssingnsPawns(board);
         AssingnsRooks(board);
     }
-    
+
 
     //Metodo mover pieza
     public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color){
         Piece[][]boards = new Piece[9][9];
+
         if (type != null) {
+
             if (type.getColor() != color) {
                 System.out.println("No es el turno del jugador");
                 return null;
+            }else if(type.movePiece(newCordX, newCordY, color) != true){
+                return null;
             }
-    
+            //Si hay un espacio valido se incrementa el turno
+            turn();
+
             if (type.movePiece(newCordX, newCordY, color)) {
                 System.out.println("Turno: "+type.getColor());
                 System.out.println("Pieza identificada: " + type.getName());
@@ -100,9 +125,9 @@ public class Board {
                 boards[cordX][cordY] = null;
                 setBoard(boards);
             }
-    
+
         }
-        
+
         return getBoard();
     }
 

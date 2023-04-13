@@ -20,6 +20,7 @@ public class Pawn extends Piece {
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX ,corY ,color) == false) {
+
             System.out.println("Movimiento invalido");
             return false;
         }

@@ -14,6 +14,8 @@ public class ControllerA {
 
     private Piece piece;
 
+    private Knight knight;
+
     private boolean color = true;
 
     private int turn = 0;
@@ -26,10 +28,10 @@ public class ControllerA {
 
     public String verifyData(String cordX , String cordY , String newCordX , String newCordY){
 
-        int corddX = 0;
-        int corddY = 0;
-        int newCorddX= 0;
-        int newCorddY = 0;
+        int corddX ;
+        int corddY ;
+        int newCorddX;
+        int newCorddY ;
 
         try{
 
@@ -41,17 +43,14 @@ public class ControllerA {
         }catch (NumberFormatException e){
             return "El tipo de dato ingresado no es valido";
         }
-        
+
         identifyPiece(corddX,corddY,color,newCorddX,newCorddY);
         return "Validando datos...";
     }
 
     public void turn (){
-         turn = (turn + 1)%2;
-         color = turn == 0;
-    }
-    public boolean getColor(){
-        return color;
+        turn = (turn + 1)%2;
+        color = turn == 0;
     }
 
     public void identifyPiece(int cordX, int cordY, Boolean color, int newCordX, int newCordY) {
@@ -59,10 +58,11 @@ public class ControllerA {
         if (piece == null) {
             System.out.println("Digite un espacio valido"); // manejar el caso en que no hay pieza en la coordenada especificada
             return;
-        }
-
+        } /*else {
+            turn();
+             }*/
         //Si hay un espacio valido se incrementa el turno
-        turn();
+
 
         Piece type = null;
         switch (piece.getName()) {
@@ -89,17 +89,12 @@ public class ControllerA {
                 break;
         }
         boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, color);
-        
     }
 
-        //return newBoardPieces;
-        public Piece[][] getBoardPiecess(int cordX, int cordY, int newCordX, int newCordY, Piece piece, boolean color){
-            Piece[][] boardPieces = boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, getColor());
-            return boardPieces;
-        }
+    //return newBoardPieces;
 
-        public Piece[][] getBoardPieces(){
-            Piece[][] boardPieces = boardInstance.getBoard();
-            return boardPieces;
-        }
+    public Piece[][] getBoardPieces(){
+        Piece[][] boardPieces = boardInstance.getBoard();
+        return boardPieces;
+    }
 }
