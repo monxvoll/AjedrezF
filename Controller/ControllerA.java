@@ -97,4 +97,8 @@ public class ControllerA {
         Piece[][] boardPieces = boardInstance.getBoard();
         return boardPieces;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b755405 (Correccion de errores, despues del error fatal)
