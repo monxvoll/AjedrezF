@@ -44,7 +44,6 @@ public class King extends Piece {
 
         if (actualMenosNuevaPosX < -1 || actualMenosNuevaPosX > 1 || actualMenosNuevaPosY < -1 || actualMenosNuevaPosY > 1) {
             return false;
-
         }
         return true;
     }
