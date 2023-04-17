@@ -41,7 +41,7 @@ public class Rook extends Piece{
         return true;
     }
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
-        Piece[][] board = boardInstance.getBoard();
+        /*Piece[][] board = boardInstance.getBoard();
 
         int advancedBoxesX = cordX- this.ubicationX;
         int advancedBoxesY = cordY- this.ubicationY;
@@ -93,11 +93,11 @@ public class Rook extends Piece{
         }
 
 
-
+*/
         return true;
     }
 
-    //Espacios hacia adelante
+    //Espacios hacia adelante de las negras, atras blancas
     public int recognizeSpacesA(int corX, int corY){
         Piece[][] board = boardInstance.getBoard();
 
@@ -122,12 +122,12 @@ public class Rook extends Piece{
         int obstacle = -1;
 
         //Reconocer hacia atras
-        while(corX<=verify){
+        while(corY<=verify){
             if(board[corX][corY] != null || corX<verify){
-                obstacle = corX;
+                obstacle = corY;
                 break;
             }
-            corX++;
+            corY++;
         }
         return obstacle;
     }

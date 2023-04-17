@@ -37,14 +37,14 @@ public class PrincipalT  {
         }while (true);
     }
 
-    public void printBoard(Piece[][] board) {
+    public void printBoard(Piece[][] cloneBoard) {
 
         char c = 'A';
-        for (int i = 0; i < board.length; i++){
+        for (int i = 0; i < cloneBoard.length; i++){
             System.out.print(i);
-            for (int j = 0; j < board[i].length ; j++){
-                if(board[j][i] != null) {
-                    System.out.print(board[j][i].getName()+"\t");
+            for (int j = 0; j < cloneBoard[i].length ; j++){
+                if(cloneBoard[j][i] != null) {
+                    System.out.print(cloneBoard[j][i].getName()+"\t");
                 } else if (j==0) {
                     System.out.print("\t");
                 } else if (i==0) {

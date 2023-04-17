@@ -1,6 +1,7 @@
 package Logic;
 
-public abstract class Piece implements Moveable {
+public abstract class Piece implements Moveable, Cloneable {
+
     //Cuando la ficha es blanca la variable es true
     protected boolean color = true;
     //EL nombre es el mismo tipo de ficha
@@ -22,7 +23,6 @@ public abstract class Piece implements Moveable {
         }
         return false;
     }
-    
 
     //Getters
     public int  getMotionType(){return  motionType;}

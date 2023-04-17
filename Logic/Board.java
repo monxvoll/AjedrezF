@@ -5,11 +5,7 @@ public class Board {
 
     private Piece[][] board;
 
-    private boolean color = true;
-
-    private int turn = 0;
-
-    private Piece piece;
+    private Piece[][] clonBoard;
 
     //Queens
     public Piece[][] AssingnQueen(Piece[][] board) {
@@ -61,7 +57,7 @@ public class Board {
         return board;
     }
 
-
+    //Metodos setters y getters
     public Piece getPiece(int x, int y) {
         if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
             return null;
@@ -71,24 +67,16 @@ public class Board {
     public Piece[][] getBoard() {
         return board;
     }
-
     public void setBoard(Piece[][] board) {
         this.board = board;
     }
-
-    public void setColor(boolean color){
-        this.color=color;
+    public void setClonBoard(Piece[][] cloneB){
+        this.clonBoard = cloneB;
     }
-
-    public boolean getColor(){
-        return color;
+    public Piece[][] getClonBoard(){
+        return clonBoard;
     }
-    public void turn (){
-        turn = (turn + 1)%2;
-        color = turn == 0;
-    }
-
-
+   
     public Board() {
         board = new Piece[9][9];
         AssingnKings(board);
@@ -97,6 +85,7 @@ public class Board {
         AssingnsKnight(board);
         AssingnsPawns(board);
         AssingnsRooks(board);
+        clonBoard = board.clone();
     }
 
 
@@ -106,29 +95,24 @@ public class Board {
 
         if (type != null) {
 
-            if (type.getColor() != color) {
-                System.out.println("No es el turno del jugador");
+            if(type.movePiece(newCordX, newCordY, color) != true){
                 return null;
-            }else if(type.movePiece(newCordX, newCordY, color) != true){
-                return null;
-            }
-            //Si hay un espacio valido se incrementa el turno
-            turn();
-
-            if (type.movePiece(newCordX, newCordY, color)) {
+            }else if (type.movePiece(newCordX, newCordY, color)) {
                 System.out.println("Turno: "+type.getColor());
                 System.out.println("Pieza identificada: " + type.getName());
                 System.out.println("Coordenada de la pieza x: "+ cordX+" y: "+cordY);
                 System.out.println("Coordenada de la pieza en su nueva ubicacionx: "+ newCordX+" y: "+newCordY);
-                boards = getBoard();
-                boards[newCordX][newCordY] = type;
+                boards = clonBoard;
                 boards[cordX][cordY] = null;
-                setBoard(boards);
+                boards[newCordX][newCordY] = type;
+                
+                setClonBoard(boards);
+                
             }
 
         }
 
-        return getBoard();
+        return getClonBoard();
     }
 
 }

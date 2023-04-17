@@ -31,7 +31,7 @@ public class Pawn extends Piece {
     public  boolean  verifyMovement(int cordX, int cordY, boolean color){
         Board board = new Board();
         
-       if (color && ubicationY == 2 && cordY >=4 || color ==false && ubicationY == 7 && cordY >= 5) {
+       if (color && getUbicationY() == 2 && cordY > 4 || color ==false && getUbicationY() == 7 && cordY < 5) {
             return false;
             // Verifica que el peon no se salga del tablero
         } else if (verifyRange(cordX,cordY) != true) {

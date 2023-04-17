@@ -46,10 +46,7 @@ public class Knight extends Piece {
                     (actualMenosNuevaPosX == -2 && actualMenosNuevaPosY == 1)) {
                 return true;
             }else if (verifyRange(cordX,cordY) != true) {
-
                 return false;
-            }else {
-                return  false;
             }
         }
         // Verifica que el caballo no se salga del tablero
