@@ -1,81 +1,65 @@
 package Logic;
 
 public class Pawn extends Piece {
- 
- 
+
+
     public Pawn(boolean color, String name, int ubicationX, int ubicationY) {
         super(color, name, ubicationX, ubicationY);
     }
- 
+
     public Pawn() {
- 
+
     }
- 
+
+
+
+
     @Override
     public boolean movePiece(int corX, int corY, Boolean color ) {
         Board board = new Board();
- 
+
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (verifyMovement(corX ,corY ,color) == false) {
-
             System.out.println("Movimiento invalido");
             return false;
         }
+
         //actualiza las anteriores posiciones con las nuevas
             this.ubicationX = corX ;
             this.ubicationY = corY ;
+
         //No devuelve el tablero ya que eso se hace en el identificador
         return true;
     }
- 
-    public  boolean  verifyMovement(int cordX, int cordY, boolean color){
+
+    public  boolean  verifyMovement(int cordX, int cordY, boolean color) {
         Board board = new Board();
-        
-       if (color && getUbicationY() == 2 && cordY > 4 || color ==false && getUbicationY() == 7 && cordY < 5) {
+        int actualMenosNuevaPosX = cordX - this.ubicationX;
+        int actualMenosNuevaPosY = cordY - this.ubicationY;
+        // Verifica que la nueva posicion  no tenga una pieza del mismo color
+        if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() == this.color) {
             return false;
             // Verifica que el peon no se salga del tablero
-        } else if (verifyRange(cordX,cordY) != true) {
+        } else if (verifyRange(cordX, cordY) == false) {
             return false;
-            // Verifica que la nueva posicion tenga una pieza del otro color o este vacia
-        }
- 
+            //Verifica que si el  peon esta en su posicion inicial no se mueva mas de 2 posiciones en Y
+        } else if (this.ubicationY == 2 && cordY > 4) {
+            return false;
+        } else if (this.ubicationY == 7 && cordY < 5) {
+            return false;
+            //Verifica que si el peon no esta en su posicion inicial no se mueva mas de 2 posiciones en Y
+        }else if  (this.ubicationY != 7 && this.ubicationY !=2 && actualMenosNuevaPosY >1) {
+            return false;
+            //Verifica que el peon solo se mueva a los lados si es diagonal y si hay una pieza de otro color
+        } /*else if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() != this.color &
+                actualMenosNuevaPosX ==1 && actualMenosNuevaPosY ==1 ||
+                actualMenosNuevaPosX ==-1 && actualMenosNuevaPosY ==1 ||
+                actualMenosNuevaPosX ==1 && actualMenosNuevaPosY ==-1||
+                actualMenosNuevaPosX ==-1 && actualMenosNuevaPosY ==-1 ) {
+            return true;
+        }else{
+            return  false;
+        }*/
         return  true;
- 
     }
-    //El peon no se movera diagonalmente si no hay una pieza del color opuesto
-    public void killerMove(int cordX, int cordY, boolean color) {
-            Board board = new Board();
-            Piece piece = board.getBoard()[cordX][cordY];
-        // Verifica si la casilla a donde se movera tiene una pieza del mismo color si es asi no se movera y si no si se movera
-             if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() == this.color) {
-                 System.out.println("No se puede matar una pieza del mismo color");
-            return;
-             }
-            //Verifica que las coordenadas para matar sean correctas y si es asi las actualiza
-            if (cordX == this.ubicationX + 1 && cordY == this.ubicationY + 1 ||
-                    cordX == this.ubicationX - 1 && cordY == this.ubicationY + 1 ||
-                    cordX == this.ubicationX + 1 && cordY == this.ubicationY - 1 ||
-                    cordX == this.ubicationX - 1 && cordY == this.ubicationY - 1) {
-                //Actualiza la ubicación del peón
-                this.ubicationX = cordX;
-                this.ubicationY = cordY;
-            }
- 
- 
-        }
- 
- 
- 
-    public void specialMovement(int cordX, int cordY, boolean color) {
- 
-        //verifica si las posiciones dadas al escojer la pieza son las inciales y ejecuta el movimiento especial segun el color
-        if (cordY == 2 && color == true) {
-            this.ubicationY = cordY + 2;
-        } else if (cordY == 7 && color == false)
-            this.ubicationY = cordY - 2;
-    }
-    //No devuelve el tablero ya que eso se hace en el identificador
- 
- 
- 
 }
