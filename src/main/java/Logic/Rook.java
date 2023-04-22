@@ -41,7 +41,7 @@ public class Rook extends Piece{
         return true;
     }
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
-        /*Piece[][] board = boardInstance.getBoard();
+        Piece[][] board = boardInstance.getBoard();
 
         int advancedBoxesX = cordX- this.ubicationX;
         int advancedBoxesY = cordY- this.ubicationY;
@@ -92,8 +92,6 @@ public class Rook extends Piece{
             }
         }
 
-
-*/
         return true;
     }
 
@@ -105,7 +103,7 @@ public class Rook extends Piece{
         int obstacle = -1;
 
         //Reconocer hacia adelante
-        while(corX<=verify){
+        while(corY<=verify && corY>0){
             if(board[corX][corY] != null){
                 obstacle = corY;
                 break;
@@ -123,7 +121,7 @@ public class Rook extends Piece{
 
         //Reconocer hacia atras
         while(corY<=verify){
-            if(board[corX][corY] != null || corX<verify){
+            if(board[corX][corY] != null){
                 obstacle = corY;
                 break;
             }

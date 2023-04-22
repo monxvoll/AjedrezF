@@ -31,6 +31,9 @@ public class Pawn extends Piece {
         //No devuelve el tablero ya que eso se hace en el identificador
         return true;
     }
+    public int suma(int io , int yu){
+        return io+yu;
+    }
 
     public  boolean  verifyMovement(int cordX, int cordY, boolean color) {
         Board board = new Board();
