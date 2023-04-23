@@ -67,6 +67,11 @@ public abstract class Piece implements Moveable, Cloneable {
 
     }
 
+    @Override
+    public String toString() {
+        return "Pieza seleccionada: "+this.getName()+"\nUbicacion X: "+getUbicationX()+" Y: "+getUbicationY();
+    }
+
     public Piece() {
     }
 }

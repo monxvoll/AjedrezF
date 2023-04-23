@@ -91,7 +91,9 @@ public class ControllerA {
             
             return "No es el turno del jugador";
 
-        }else if(piece.movePiece(newCordX, newCordY, color) == false){}else
+        }else if(piece.movePiece(newCordX, newCordY, color) == false){
+            return "Movimiento invalido";
+        }else
         turn();
     
         boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, color);

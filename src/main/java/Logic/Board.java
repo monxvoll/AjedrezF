@@ -50,20 +50,21 @@ public class Board {
 
     //Rooks
     public Piece[][] AssingnsRooks(Piece[][] board) {
-        board[1][1] = new Rook(true, "T", 1, 1);
+        board[1][2] = new Rook(true, "T", 1, 2);
         board[8][1] = new Rook(true, "T", 8, 1);
         board[1][8] = new Rook(false, "T", 1, 8);
         board[8][8] = new Rook(false, "T", 8, 8);
         return board;
     }
+    //Metodo obtener pieza de una posicion especifica
+    public Piece getPiece(int x, int y) {
+            if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
+                return null;
+            }
+            return board[x][y];
+    }
 
     //Metodos setters y getters
-    public Piece getPiece(int x, int y) {
-        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
-            return null;
-        }
-        return board[x][y];
-    }
     public Piece[][] getBoard() {
         return board;
     }
@@ -83,7 +84,7 @@ public class Board {
         AssingnQueen(board);
         AssingnsBishops(board);
         AssingnsKnight(board);
-        AssingnsPawns(board);
+        //AssingnsPawns(board);
         AssingnsRooks(board);
         clonBoard = board.clone();
     }

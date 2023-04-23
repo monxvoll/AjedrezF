@@ -1,167 +1,59 @@
 package Logic;
 
 public class Rook extends Piece{
-    //Instancia para acceder a Board arreglo
-    Board boardInstance ;
 
-
-    //Instancia de Piece
-    Piece whichPiece;
-
-    //Ubicacion actual del objeto
-    private int actualUbicationX = this.ubicationX;
-    private int actualUbicationY = this.ubicationY;
-
-    //Constructor
-    public Rook(boolean color, String name, int ubicationX, int ubicationY) {
-        super(color, name, ubicationX, ubicationY);
-    }
-    public Rook(){
-
-    }
-    //Metodos
-
-    //Mover General
+   //Constructor
+   public Rook(boolean color, String name, int ubicationX, int ubicationY) {
+    super(color, name, ubicationX, ubicationY);
+   }
+    public Rook(){}
+    //Métodos
     @Override
-    public boolean movePiece(int corX, int corY, Boolean color ) {
-
-        Board board = new Board();
-
-        //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
-        if (verifyMovement(corX ,corY ,color) == false) {
-            System.out.println("Movimiento invalido");
+    public boolean movePiece(int corX, int corY, Boolean color) {
+        if (verifyMovement(corX, corY, color) != true) {
             return false;
         }
-
-        //actualiza las anteriores posiciones con las nuevas
-        this.setUbicationX(corX);
-        this.setUbicationY(corY);
-
-        //No devuelve el tablero ya que eso se hace en el identificador
+        this.ubicationX = corX;
+        this.ubicationY = corY;
         return true;
     }
+
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
-        Piece[][] board = boardInstance.getBoard();
-
-        int advancedBoxesX = cordX- this.ubicationX;
-        int advancedBoxesY = cordY- this.ubicationY;
-
-        int cordA = recognizeSpacesA(actualUbicationX, actualUbicationY);
-        int cordAt = recognizeSpacesAt(actualUbicationX, actualUbicationY);
-        int cordLe = recognizeSpacesLe(actualUbicationX, actualUbicationY);
-        int cordRi = recognizeSpacesRi(actualUbicationX, actualUbicationY);
-
-        if(board[cordX][cordY] != null){
-
-            if(recognizeSpacesA(actualUbicationX, actualUbicationY)!= -1){
-
-                //Hacia adelante blancas, hacia atras negras
-                if(cordY>cordA|| cordY<cordA){
-                    if(cordY > cordA && color == true){
-                        return false;
-                    }else{
-                        return false;
-                    }
-                }else if(cordA == cordY && board[cordX][cordY].getColor() == board[actualUbicationX][actualUbicationY].getColor()){
-                    System.out.println("No puedes matar una pieza de tu equipo");
-                    return false;
-                }else if (cordA == cordY && board[cordX][cordY].getColor() != board[actualUbicationX][actualUbicationY].getColor()){
-                    return true;
+        // Instancia d eboard
+        Board board = new Board();
+        
+        // Ve a que direccion va el movimiento
+        int dirX = Integer.compare(cordX, ubicationX);
+        int dirY = Integer.compare(cordY, ubicationY);
+    
+        // ve si se mueve vertical
+        if (dirX == 0) {
+            int currentY = ubicationY + dirY;
+            while (currentY != cordY) {
+                if (board.getPiece(ubicationX, currentY) != null) {
+                    return false; // Se ejecuta si hay algo en el camino
                 }
-            }else{
-                return true;
+                currentY += dirY;
             }
-
-            if(recognizeSpacesAt(actualUbicationX, actualUbicationY)!= -1){
-
-                //Hacia adelante blancas, hacia atras negras
-                if(cordY>cordA|| cordY<cordA){
-                    if(cordY > cordA && color == true){
-                        return false;
-                    }else{
-                        return false;
-                    }
-                }else if(cordA == cordY && board[cordX][cordY].getColor() == board[actualUbicationX][actualUbicationY].getColor()){
-                    System.out.println("No puedes matar una pieza de tu equipo");
-                    return false;
-                }else if (cordA == cordY && board[cordX][cordY].getColor() != board[actualUbicationX][actualUbicationY].getColor()){
-                    return true;
+        }
+        // si se mueve de forma horizontal
+        else if (dirY == 0) {
+            int currentX = ubicationX + dirX;
+            while (currentX != cordX) {
+                if (board.getPiece(currentX, ubicationY) != null) {
+                    return false; // Se ejecuta si hay algo en el camino
                 }
-            }else{
-                return true;
+                currentX += dirX;
             }
         }
-
-        return true;
-    }
-
-    //Espacios hacia adelante de las negras, atras blancas
-    public int recognizeSpacesA(int corX, int corY){
-        Piece[][] board = boardInstance.getBoard();
-
-        int verify = board.length-1;
-        int obstacle = -1;
-
-        //Reconocer hacia adelante
-        while(corY<=verify && corY>0){
-            if(board[corX][corY] != null){
-                obstacle = corY;
-                break;
-            }
-            corY--;
+        // si no cumple con ninguno de los dos tipos de movimiento va a retornar falso
+        else {
+            return false;
         }
-        return obstacle;
+    
+        //Verifica si el color de la pieza es igual al color de la interrupcion
+        Piece targetPiece = board.getPiece(cordX, cordY);
+        return targetPiece == null || targetPiece.getColor() != color;
     }
-    //Espacios hacia atras
-    public int recognizeSpacesAt(int corX, int corY){
-        Piece[][] board = boardInstance.getBoard();
-
-        int verify = board.length-1;
-        int obstacle = -1;
-
-        //Reconocer hacia atras
-        while(corY<=verify){
-            if(board[corX][corY] != null){
-                obstacle = corY;
-                break;
-            }
-            corY++;
-        }
-        return obstacle;
-    }
-    //Espacios hacia la izquierda
-    public int recognizeSpacesLe(int corX, int corY){
-        Piece[][] board = boardInstance.getBoard();
-
-        int verify = board.length-1;
-        int obstacle = -1;
-
-        //Reconocer hacia Izquierda
-        while(corY<=verify && corY> 0){
-            if(board[corX][corY] != null){
-                obstacle = corY;
-                break;
-            }
-            corY--;
-        }
-        return obstacle;
-    }
-    //Espacios hacia la derecha
-    public int recognizeSpacesRi(int corX, int corY){
-        Piece[][] board = boardInstance.getBoard();
-
-        int verify = board.length-1;
-        int obstacle = -1;
-        //Reconocer hacia derecha
-        while(corY<=verify){
-            if(board[corX][corY] != null){
-                obstacle = corY;
-                break;
-            }
-            corY++;
-        }
-        return obstacle;
-    }
-
 
 }
