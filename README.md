@@ -1,10 +1,11 @@
 ***********************************************
 Proyecto de ajedrez
 presentado por : Steven Universe and Jose S
-presentado a : Ing.Ivan Leal siuuuuuuuuuuu
+
+presentado a : Ing.Ivan Leal
 
 En que consiste el proyecto:
-El proyecto consiste en un ajedren funcional
+El proyecto consiste en un ajedrez funcional de dos turnos
 
 comandos usados
 git
