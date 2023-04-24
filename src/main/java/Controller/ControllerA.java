@@ -45,14 +45,14 @@ public class ControllerA {
             corddY = Integer.parseInt(cordY);
             newCorddX = Integer.parseInt(newCordX);
             newCorddY = Integer.parseInt(newCordY);
-
+            return identifyPiece(corddX,corddY,colorTurn,newCorddX,newCorddY);
         }catch (NumberFormatException e){
             return "El tipo de dato ingresado no es valido";
         }catch (ArrayIndexOutOfBoundsException exep){
             return "Movimiento fuera de los limites";
         }
 
-        return identifyPiece(corddX,corddY,colorTurn,newCorddX,newCorddY);
+        
     }
 
     public String identifyPiece(int cordX, int cordY, Boolean color, int newCordX, int newCordY) {
@@ -92,12 +92,17 @@ public class ControllerA {
             return "No es el turno del jugador";
 
         }else if(piece.movePiece(newCordX, newCordY, color) == false){
+
             return "Movimiento invalido";
-        }else
+    
+        }
+        //Si por cumple el movmiento valido itera el turno
+        else
         turn();
     
         boardInstance.movePiece(cordX, cordY, newCordX, newCordY, piece, color);
-        return "";
+        String retorno = piece.toString();
+        return retorno;
     }
 
     //return newBoardPieces

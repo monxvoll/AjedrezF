@@ -31,8 +31,10 @@ public class Rook extends Piece{
             int currentY = ubicationY + dirY;
             while (currentY != cordY) {
                 if (board.getPiece(ubicationX, currentY) != null) {
+
                     return false; // Se ejecuta si hay algo en el camino
                 }
+                System.out.println(currentY);
                 currentY += dirY;
             }
         }

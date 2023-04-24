@@ -6,8 +6,7 @@ public class Board {
     private Piece[][] board;
 
     private Piece[][] clonBoard;
-
-    //Queens
+    
     public Piece[][] AssingnQueen(Piece[][] board) {
         board[5][1] = new Queen(true, "Q", 5, 1);
         board[5][8] = new Queen(false, "Q", 5, 8);
@@ -50,7 +49,7 @@ public class Board {
 
     //Rooks
     public Piece[][] AssingnsRooks(Piece[][] board) {
-        board[1][2] = new Rook(true, "T", 1, 2);
+        board[1][1] = new Rook(true, "T", 1, 1);
         board[8][1] = new Rook(true, "T", 8, 1);
         board[1][8] = new Rook(false, "T", 1, 8);
         board[8][8] = new Rook(false, "T", 8, 8);
@@ -62,6 +61,19 @@ public class Board {
                 return null;
             }
             return board[x][y];
+    }
+
+    //Metodo clonar arreglo independiente
+    public Piece[][] cloneBoard(Piece[][] board) {
+        Piece[][] clone = new Piece[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] != null) {
+                    clone[i][j] = (Piece) board[i][j].clone();
+                }
+            }
+        }
+        return clone;
     }
 
     //Metodos setters y getters
@@ -84,36 +96,26 @@ public class Board {
         AssingnQueen(board);
         AssingnsBishops(board);
         AssingnsKnight(board);
-        //AssingnsPawns(board);
+        AssingnsPawns(board);
         AssingnsRooks(board);
-        clonBoard = board.clone();
+        clonBoard = cloneBoard(board);
     }
 
-
     //Metodo mover pieza
-    public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color){
-        Piece[][]boards = new Piece[9][9];
-
+    public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color) {
         if (type != null) {
-
-            if(type.movePiece(newCordX, newCordY, color) != true){
+            if (!type.movePiece(newCordX, newCordY, color)) {
                 return null;
-            }else if (type.movePiece(newCordX, newCordY, color)) {
-                System.out.println("Turno: "+type.getColor());
-                System.out.println("Pieza identificada: " + type.getName());
-                System.out.println("Coordenada de la pieza x: "+ cordX+" y: "+cordY);
-                System.out.println("Coordenada de la pieza en su nueva ubicacionx: "+ newCordX+" y: "+newCordY);
-                boards = clonBoard;
-                boards[cordX][cordY] = null;
-                boards[newCordX][newCordY] = type;
-                
-                setClonBoard(boards);
-                
+            } else {
+               
+                // actualiza el tablero real
+                clonBoard[cordX][cordY] = null;
+                clonBoard[newCordX][newCordY] = type;
+    
+                return getClonBoard();
             }
-
         }
-
-        return getClonBoard();
+        return null;
     }
 
 }

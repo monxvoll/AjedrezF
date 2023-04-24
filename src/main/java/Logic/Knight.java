@@ -31,28 +31,21 @@ public class Knight extends Piece {
 
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
         Board board = new Board();
-        int actualMenosNuevaPosX = cordX - this.ubicationX;
-        int actualMenosNuevaPosY = cordY - this.ubicationY;
-        System.out.println(actualMenosNuevaPosX);
-        System.out.println(actualMenosNuevaPosY);
-
+        
+        int actualMenosNuevaPosX = Math.abs(cordX - this.ubicationX);
+        int actualMenosNuevaPosY = Math.abs(cordY - this.ubicationY);
+ 
         // Verifica que la nueva posicion  no tenga una pieza del mismo color
         if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() == this.color) {
             return false;
-            // Verifica que el usuario digito un movimiento correcto en L del  caballo calculando cuantos cuadros se movio en X o Yif ((actualMenosNuevaPosX != 1 && actualMenosNuevaPosY != 2) ||
+            // Verifica que el caballo no se salga del tablero
         } else if (verifyRange(cordX, cordY) == false) {
             return false;
-        } else if ((actualMenosNuevaPosX == 1 && actualMenosNuevaPosY == 2) ||
-                (actualMenosNuevaPosX == 2 && actualMenosNuevaPosY == 1) ||
-                (actualMenosNuevaPosX == -1 && actualMenosNuevaPosY == -2) ||
-                (actualMenosNuevaPosX == -2 && actualMenosNuevaPosY == -1) ||
-                (actualMenosNuevaPosX == -1 && actualMenosNuevaPosY == 2) ||
-                (actualMenosNuevaPosX == 1 && actualMenosNuevaPosY == -2) ||
-                (actualMenosNuevaPosX == 2 && actualMenosNuevaPosY == -1) ||
-                (actualMenosNuevaPosX == -2 && actualMenosNuevaPosY == 1)) {
-            return true;
-        } else {
+            //Verifica que el caballo se  mueva en L
+        } else if ((actualMenosNuevaPosX + actualMenosNuevaPosY )!= 3) {
             return false;
+        } else {
+            return true;
         }
     }
 }

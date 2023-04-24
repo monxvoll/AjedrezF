@@ -13,7 +13,6 @@ public class King extends Piece {
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
         if (!verifyMovement(corX, corY, color)) {
-            System.out.println("Movimiento inválido");
             return false;
         }
         // Actualiza las anteriores posiciones con las nuevas
@@ -25,6 +24,27 @@ public class King extends Piece {
     }
 
     public boolean verifyMovement(int cordX, int cordY, boolean color) {
+
+        Board board = new Board();
+
+        int actualMenosNuevaPosX = Math.abs(cordX - this.ubicationX);
+        int actualMenosNuevaPosY = Math.abs(cordY - this.ubicationY);
+ 
+        // Verifica que la nueva posicion tenga una pieza del otro color
+        if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() == this.color) {
+            return false;
+            // Verifica que el rey no se salga del tablero
+        } if (verifyRange(cordX, cordY) == false) {
+            return false;
+            //Verifica que el rey solo se mueva un cuadro
+        }else if (actualMenosNuevaPosX > 1 || actualMenosNuevaPosY > 1) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    /*public boolean verifyMovement(int cordX, int cordY, boolean color) {
         Board board = new Board();
         // Verifica que la nueva posicion tenga una pieza del otro color o este vacia
         if (board.getBoard()[cordX][cordY] == null || board.getBoard()[cordX][cordY].getColor() != this.color) {
@@ -69,7 +89,7 @@ public class King extends Piece {
             this.ubicationX = cordX;
             this.ubicationY = cordY;
         }
-    }
+    }*/
 }
 
 

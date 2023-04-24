@@ -24,6 +24,15 @@ public abstract class Piece implements Moveable, Cloneable {
         return false;
     }
 
+    @Override
+    public Piece clone() {
+        try {
+            return (Piece) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();  // Nunca debería ocurrir
+        }
+    }
+
     //Getters
     public int  getMotionType(){return  motionType;}
     public boolean getColor(){
@@ -69,7 +78,7 @@ public abstract class Piece implements Moveable, Cloneable {
 
     @Override
     public String toString() {
-        return "Pieza seleccionada: "+this.getName()+"\nUbicacion X: "+getUbicationX()+" Y: "+getUbicationY();
+        return "Pieza seleccionada: "+this.getName()+"\nNueva ubicacion X: "+getUbicationX()+" Y: "+getUbicationY();
     }
 
     public Piece() {

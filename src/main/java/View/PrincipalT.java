@@ -11,7 +11,7 @@ public class PrincipalT  {
         PrincipalT tablero = new PrincipalT();
 
         Scanner scanner = new Scanner(System.in);
-
+        
         //Variables
         char cE = 'A';
 
