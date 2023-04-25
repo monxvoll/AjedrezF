@@ -57,8 +57,8 @@ public class Queen extends Piece {
         else if (direccionX == 0) {
             int currentY = ubicationY + direccionY;
             while (currentY != corY) {
-                if (board[ubicationX][currentlyY] != null) {
-                    return "ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
+                if (board[ubicationX][currentY] != null) {
+                    return "ERROR [Vertical, no puedes moverte, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
                 }
                 currentY += direccionY;
             }
@@ -66,14 +66,14 @@ public class Queen extends Piece {
         // si se mueve de forma horizontal
         else if (direccionY == 0) {
             int currentX = ubicationX + direccionX;
-            while (currentX != direccionX) {
+            while (currentX != corX) {
                 if (board[currentX][ubicationY] != null) {
-                    return "ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
+                    return "ERROR [Movimiento horizontal, no puedes moverte, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
                 }
                 currentX += direccionX;
             }
         }else if(advancedX != advancedY && direccionX!=0 && direccionY != 0){
-            return "ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]";
+            return "ERROR [Movimiento invalido]";
         }
 
         Piece targetPiece = board[corX][corY];

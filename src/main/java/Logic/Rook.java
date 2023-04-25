@@ -31,7 +31,6 @@ public class Rook extends Piece{
 
                     return "ERROR [Movimiento vertical, no puedes mover, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
                 }
-                System.out.println(currentY);
                 currentY += dirY;
             }
         }
