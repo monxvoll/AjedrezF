@@ -40,16 +40,16 @@ public class Bishop extends Piece{
         int direccionY = Integer.compare(destY, ubicationY);
 
         //Variables posiciones actuales
-        int currentlyX = ubicationX;
-        int currentlyY = ubicationY;
+        int currentlyX = ubicationX + direccionX;
+        int currentlyY = ubicationY + direccionY;
 
         //Ciclo que se va a encargar de iterar hasta la nueva posicion de la pieza
-        while( (currentlyX+=direccionX) != destX && (currentlyY+=direccionY) != destY ){
+        while(currentlyX != destX && currentlyY != destY) {
             if(board[currentlyX][currentlyY] != null){
-                //Se va a entrar si har algun tipo de obstaculo
+                //Se va a entrar si hay algún tipo de obstáculo
                 return "ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]";
             }
-            //En teoria esto itera hacia la direccion en que se movio, ya sea en X o Y
+            //En teoría esto itera hacia la dirección en que se movió, ya sea en X o Y
             currentlyX += direccionX;
             currentlyY += direccionY;
         }
