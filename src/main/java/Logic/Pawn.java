@@ -28,18 +28,17 @@ public class Pawn extends Piece {
 
         int actualMenosNuevaPosX = Math.abs(cordX - this.ubicationX);
         int actualMenosNuevaPosY = Math.abs(cordY - this.ubicationY);
-        int actualMenosNuevaPosYY = cordY - this.ubicationY;
 
         // Verifica que la nueva posicion  no tenga una pieza del mismo color
         if (board[cordX][cordY] != null && board[cordX][cordY].getColor() == this.color) {
-            return("ERROR [No puedes matar a tu propio equipo]");
-            // Verifica que el peon no se salga del tablero
+            return ("ERROR [No puedes matar a tu propio equipo]");
+        // Verifica que el peon no se salga del tablero
         } else if (verifyRange(cordX, cordY) == false) {
             return("ERROR [Las nuevas coordenadas no estan dentro del tablero]");
             //Verifica que si el  peon esta en su posicion inicial no se mueva mas de 2 posiciones en Y
-        } else if (this.ubicationY == 2 && cordY > 4) {
+        } else if (this.ubicationY == 2 && (cordY > 4 || board[cordX][this.ubicationY+1]!=null)) {
             return("ERROR [Movimiento invalido para esta posicion]");
-        } else if (this.ubicationY == 7 && cordY < 5) {
+        } else if (this.ubicationY == 7 && (cordY < 5 || board[cordX][this.ubicationY-1]!=null)) {
             return("ERROR [Movimiento invalido para esta posicion]");
             //Verifica que si el peon no esta en su posicion inicial no se mueva mas de 2 posiciones en Y
         } else if (this.ubicationY != 7 && this.ubicationY != 2 && actualMenosNuevaPosY > 1) {
@@ -47,6 +46,7 @@ public class Pawn extends Piece {
             //Verifica que el peon no se mueva a un espacio vacio a la derecha o izquierda
         } else if (board[cordX][cordY] == null && actualMenosNuevaPosX != 0) {
             return("ERROR [Movimiento imposible]");
+            //Verifica que el peon no salte de frente
         } else if (board[cordX][cordY] != null && actualMenosNuevaPosX == 0 && actualMenosNuevaPosY == 1) {
             return("ERROR [No puedes matar de frente]");
             //Verifica que el peon no se mueva diagonalmente mas de un cuadro
