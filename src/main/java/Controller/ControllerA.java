@@ -34,7 +34,7 @@ public class ControllerA {
             newCorddX = newCordX.charAt(0)-64;
             newCorddY = Integer.parseInt(newCordY);
             return identifyPiece(corddX,corddY,colorTurn,newCorddX,newCorddY);
-        }catch (NumberFormatException e){
+        }catch (NumberFormatException e) {
             return "El tipo de dato ingresado no es valido";
         }catch(ArrayIndexOutOfBoundsException exp){
             return "Fuera de rango";

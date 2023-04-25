@@ -36,8 +36,8 @@ public class Knight extends Piece {
         if (board[cordX][cordY] != null && board[cordX][cordY].getColor() == this.color) {
             return "ERROR [No te puedes comer a ti mismo]";
             // Verifica que el caballo no se salga del tablero
-        } else if (verifyRange(cordX, cordY) == false) {
-            return "ERROR [Te has salido de los limites]";//Esto nunca se deberia de ejecutar
+        } else if (!verifyRange(cordX, cordY)) {
+            return "ERROR [Has salido de los limites]";//Esto nunca se deberia de ejecutar
             //Verifica que el caballo se  mueva en L
         } else if ((actualMenosNuevaPosX + actualMenosNuevaPosY )!= 3) {
             return "ERROR [El movimiento no cumple las reglas del ajedrez]";

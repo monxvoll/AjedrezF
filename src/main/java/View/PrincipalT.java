@@ -22,7 +22,7 @@ public class PrincipalT  {
             }while (true);
         } catch (CustomWinExeption e) {
             System.err.println("WOW..... haz ganado"+ "\nGRACIAS POR JUGAR"+"\nLa nota de este proyecto es 50 SIUUUU"
-            +"\n\n\nBy: Steven Universe and Jose S");
+            +"\n\n\nBy: David S and Jose S");
         }
     }
 

@@ -29,16 +29,7 @@ public class Pawn extends Piece {
         int actualMenosNuevaPosX = Math.abs(cordX - this.ubicationX);
         int actualMenosNuevaPosY = Math.abs(cordY - this.ubicationY);
         int actualMenosNuevaPosYY = cordY - this.ubicationY;
-        
-        //Verifica que la pieza no retroceda
-        if (board[cordX][cordY] != null) {
-            if (board[cordX][cordY].getColor() == false && actualMenosNuevaPosYY < 0) {
-                return "false";
-            }
-            if (board[cordX][cordY].getColor() == true && actualMenosNuevaPosYY < 0) {
-                return "false";
-            }
-        }
+
         // Verifica que la nueva posicion  no tenga una pieza del mismo color
         if (board[cordX][cordY] != null && board[cordX][cordY].getColor() == this.color) {
             return("ERROR [No puedes matar a tu propio equipo]");
@@ -55,13 +46,15 @@ public class Pawn extends Piece {
             return("ERROR [Movimiento invalido]");
             //Verifica que el peon no se mueva a un espacio vacio a la derecha o izquierda
         } else if (board[cordX][cordY] == null && actualMenosNuevaPosX != 0) {
-            System.out.println(actualMenosNuevaPosX);
             return("ERROR [Movimiento imposible]");
         } else if (board[cordX][cordY] != null && actualMenosNuevaPosX == 0 && actualMenosNuevaPosY == 1) {
             return("ERROR [No puedes matar de frente]");
             //Verifica que el peon no se mueva diagonalmente mas de un cuadro
         } else if (actualMenosNuevaPosX >1 ) {
-            return"ERROR [Jugada invalida]";
+            return "ERROR [Jugada invalida]";
+            // Verifica que el peon no intente retroceder segun su color
+        } else if ((color && cordY < this.ubicationY) || (!color && cordY > this.ubicationY)) {
+            return("ERROR [No puedes retroceder]");
         }else {
             return "true";
         }
