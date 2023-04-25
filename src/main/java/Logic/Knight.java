@@ -7,18 +7,16 @@ public class Knight extends Piece {
         super(color, name, ubicationX, ubicationY);
     }
 
-    public Knight() {
-    }
+    
 
 
     @Override
-    public boolean movePiece(int corX, int corY, Boolean color) {
+    public String movePiece(int corX, int corY, Boolean color, Piece [][] board) {
 
 
         //ejecuta el metodo verificar y si se cumple alguna condicion dara false y saldra del metodo mover pieza
-        if (verifyMovement(corX, corY, color) == false) {
-            System.out.println("Movimiento invalido");
-            return false;
+        if (!verifyMovement(corX, corY, color, board).equals("true")) {
+            return verifyMovement(corX, corY, color, board);
         }
 
         //actualiza las anteriores posiciones con las nuevas
@@ -26,26 +24,25 @@ public class Knight extends Piece {
         this.ubicationY = corY;
 
         //No devuelve el tablero ya que eso se hace en el identificador
-        return true;
+        return "true";
     }
 
-    public boolean verifyMovement(int cordX, int cordY, boolean color) {
-        Board board = new Board();
+    public String verifyMovement(int cordX, int cordY, boolean colo, Piece[][] board) {
         
         int actualMenosNuevaPosX = Math.abs(cordX - this.ubicationX);
         int actualMenosNuevaPosY = Math.abs(cordY - this.ubicationY);
  
         // Verifica que la nueva posicion  no tenga una pieza del mismo color
-        if (board.getBoard()[cordX][cordY] != null && board.getBoard()[cordX][cordY].getColor() == this.color) {
-            return false;
+        if (board[cordX][cordY] != null && board[cordX][cordY].getColor() == this.color) {
+            return "ERROR [No te puedes comer a ti mismo]";
             // Verifica que el caballo no se salga del tablero
         } else if (verifyRange(cordX, cordY) == false) {
-            return false;
+            return "ERROR [Te has salido de los limites]";//Esto nunca se deberia de ejecutar
             //Verifica que el caballo se  mueva en L
         } else if ((actualMenosNuevaPosX + actualMenosNuevaPosY )!= 3) {
-            return false;
+            return "ERROR [El movimiento no cumple las reglas del ajedrez]";
         } else {
-            return true;
+            return "true";
         }
     }
 }

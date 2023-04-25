@@ -1,11 +1,12 @@
 package Logic;
 
+import Logic.Exeptions.CustomWinExeption;
+
 public class Board {
 
 
     private Piece[][] board;
 
-    private Piece[][] clonBoard;
     
     public Piece[][] AssingnQueen(Piece[][] board) {
         board[5][1] = new Queen(true, "Q", 5, 1);
@@ -55,26 +56,8 @@ public class Board {
         board[8][8] = new Rook(false, "T", 8, 8);
         return board;
     }
-    //Metodo obtener pieza de una posicion especifica
-    public Piece getPiece(int x, int y) {
-            if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
-                return null;
-            }
-            return board[x][y];
-    }
 
-    //Metodo clonar arreglo independiente
-    public Piece[][] cloneBoard(Piece[][] board) {
-        Piece[][] clone = new Piece[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] != null) {
-                    clone[i][j] = (Piece) board[i][j].clone();
-                }
-            }
-        }
-        return clone;
-    }
+    
 
     //Metodos setters y getters
     public Piece[][] getBoard() {
@@ -83,11 +66,8 @@ public class Board {
     public void setBoard(Piece[][] board) {
         this.board = board;
     }
-    public void setClonBoard(Piece[][] cloneB){
-        this.clonBoard = cloneB;
-    }
     public Piece[][] getClonBoard(){
-        return clonBoard;
+        return board.clone();
     }
    
     public Board() {
@@ -98,22 +78,19 @@ public class Board {
         AssingnsKnight(board);
         AssingnsPawns(board);
         AssingnsRooks(board);
-        clonBoard = cloneBoard(board);
     }
-
     //Metodo mover pieza
-    public Piece[][] movePiece(int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color) {
+    public Piece[][] movePiece (int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color) throws CustomWinExeption{
         if (type != null) {
-            if (!type.movePiece(newCordX, newCordY, color)) {
-                return null;
-            } else {
-               
-                // actualiza el tablero real
-                clonBoard[cordX][cordY] = null;
-                clonBoard[newCordX][newCordY] = type;
-    
-                return getClonBoard();
+
+            if(board[newCordX][newCordY] != null && (type.getColor() != board[newCordX][newCordY].getColor()) && board[newCordX][newCordY].getName().equals("K")) {
+                String turn = "";
+                if(color){turn = "Blanco";}else turn="Negro";
+                throw new CustomWinExeption("");
             }
+            // actualiza el tablero real
+            board[cordX][cordY] = null;
+            board[newCordX][newCordY] = type;
         }
         return null;
     }

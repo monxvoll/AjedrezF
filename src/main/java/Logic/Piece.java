@@ -1,5 +1,7 @@
 package Logic;
 
+import Logic.Interface.Moveable;
+
 public abstract class Piece implements Moveable, Cloneable {
 
     //Cuando la ficha es blanca la variable es true
@@ -24,15 +26,6 @@ public abstract class Piece implements Moveable, Cloneable {
         return false;
     }
 
-    @Override
-    public Piece clone() {
-        try {
-            return (Piece) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();  // Nunca debería ocurrir
-        }
-    }
-
     //Getters
     public int  getMotionType(){return  motionType;}
     public boolean getColor(){
@@ -47,7 +40,6 @@ public abstract class Piece implements Moveable, Cloneable {
     public int getUbicationY(){
         return ubicationY;
     }
-
 
     //Setters
     public  void setMotionType(int motionType) {
@@ -78,9 +70,8 @@ public abstract class Piece implements Moveable, Cloneable {
 
     @Override
     public String toString() {
-        return "Pieza seleccionada: "+this.getName()+"\nNueva ubicacion X: "+getUbicationX()+" Y: "+getUbicationY();
+        return "Pieza seleccionada: "+this.getName()+"\nNueva ubicacion X: "+(char)(getUbicationX()+64)+" Y: "+getUbicationY();
     }
 
-    public Piece() {
-    }
+    
 }

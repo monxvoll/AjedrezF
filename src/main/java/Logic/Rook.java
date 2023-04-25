@@ -3,24 +3,21 @@ package Logic;
 public class Rook extends Piece{
 
    //Constructor
-   public Rook(boolean color, String name, int ubicationX, int ubicationY) {
-    super(color, name, ubicationX, ubicationY);
-   }
-    public Rook(){}
+    public Rook(boolean color, String name, int ubicationX, int ubicationY) {
+        super(color, name, ubicationX, ubicationY);
+    }
     //Métodos
     @Override
-    public boolean movePiece(int corX, int corY, Boolean color) {
-        if (verifyMovement(corX, corY, color) != true) {
-            return false;
+    public String movePiece(int corX, int corY, Boolean color, Piece[][] board) {
+        if (!verifyMovement(corX, corY, color, board).equals("true")) {
+            return verifyMovement(corX, corY, getColor(), board);
         }
         this.ubicationX = corX;
         this.ubicationY = corY;
-        return true;
+        return "true";
     }
 
-    public boolean verifyMovement(int cordX, int cordY, boolean color) {
-        // Instancia d eboard
-        Board board = new Board();
+    public String verifyMovement(int cordX, int cordY, boolean color, Piece[][] board) {
         
         // Ve a que direccion va el movimiento
         int dirX = Integer.compare(cordX, ubicationX);
@@ -30,9 +27,9 @@ public class Rook extends Piece{
         if (dirX == 0) {
             int currentY = ubicationY + dirY;
             while (currentY != cordY) {
-                if (board.getPiece(ubicationX, currentY) != null) {
+                if (board[ubicationX][currentY] != null) {
 
-                    return false; // Se ejecuta si hay algo en el camino
+                    return "ERROR [Movimiento vertical, no puedes mover, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
                 }
                 System.out.println(currentY);
                 currentY += dirY;
@@ -42,20 +39,23 @@ public class Rook extends Piece{
         else if (dirY == 0) {
             int currentX = ubicationX + dirX;
             while (currentX != cordX) {
-                if (board.getPiece(currentX, ubicationY) != null) {
-                    return false; // Se ejecuta si hay algo en el camino
+                if (board[currentX][ubicationY] != null) {
+                    return "ERROR [Movimiento horizontal, no puedes mover, hay una pieza en tu camino que te obstruye]"; // Se ejecuta si hay algo en el camino
                 }
                 currentX += dirX;
             }
         }
         // si no cumple con ninguno de los dos tipos de movimiento va a retornar falso
         else {
-            return false;
+            return "ERROR [No te estas moviendo horizontal ni verticalmente]";
         }
     
         //Verifica si el color de la pieza es igual al color de la interrupcion
-        Piece targetPiece = board.getPiece(cordX, cordY);
-        return targetPiece == null || targetPiece.getColor() != color;
+        Piece targetPiece = board[cordX][cordY];
+        if(targetPiece == null || targetPiece.getColor() != color)
+        return "true";
+        else
+        return "ERROR [No te puedes comer a ti mismo]";
     }
 
 }
