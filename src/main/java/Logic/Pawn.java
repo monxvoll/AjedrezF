@@ -45,7 +45,10 @@ public class Pawn extends Piece {
             return("ERROR [Movimiento invalido]");
             //Verifica que el peon no se mueva a un espacio vacio a la derecha o izquierda
         } else if (board[cordX][cordY] == null && actualMenosNuevaPosX != 0) {
-            return("ERROR [Movimiento imposible]");
+            return ("ERROR [Movimiento imposible]");
+            //Verifica que el peon no mate a los lados
+        }else if (board[cordX][cordY] != null && actualMenosNuevaPosX != 0 && cordY == this.ubicationY) {
+            return("ERROR [No puedes matar a los lados]");
             //Verifica que el peon no salte de frente
         } else if (board[cordX][cordY] != null && actualMenosNuevaPosX == 0 && actualMenosNuevaPosY == 1) {
             return("ERROR [No puedes matar de frente]");
