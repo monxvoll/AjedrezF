@@ -36,9 +36,9 @@ public class Pawn extends Piece {
         } else if (verifyRange(cordX, cordY) == false) {
             return("ERROR [Las nuevas coordenadas no estan dentro del tablero]");
             //Verifica que si el  peon esta en su posicion inicial no se mueva mas de 2 posiciones en Y
-        } else if (this.ubicationY == 2 && (cordY > 4 || board[cordX][this.ubicationY+1]!=null)) {
+        } else if (this.ubicationY == 2 && actualMenosNuevaPosX == 0 && (cordY > 4 || board[cordX][this.ubicationY+1]!=null)) {
             return("ERROR [Movimiento invalido para esta posicion]");
-        } else if (this.ubicationY == 7 && (cordY < 5 || board[cordX][this.ubicationY-1]!=null)) {
+        } else if (this.ubicationY == 7 && actualMenosNuevaPosX == 0 && (cordY < 5 || board[cordX][this.ubicationY-1]!=null)) {
             return("ERROR [Movimiento invalido para esta posicion]");
             //Verifica que si el peon no esta en su posicion inicial no se mueva mas de 2 posiciones en Y
         } else if (this.ubicationY != 7 && this.ubicationY != 2 && actualMenosNuevaPosY > 1) {
@@ -53,7 +53,7 @@ public class Pawn extends Piece {
         } else if (board[cordX][cordY] != null && actualMenosNuevaPosX == 0 && actualMenosNuevaPosY == 1) {
             return("ERROR [No puedes matar de frente]");
             //Verifica que el peon no se mueva diagonalmente mas de un cuadro
-        } else if (actualMenosNuevaPosX >1 ) {
+        } else if (actualMenosNuevaPosX >1  ) {
             return "ERROR [No te puedes mover diagonalmente]";
             // Verifica que el peon no intente retroceder segun su color
         } else if ((color && cordY < this.ubicationY) || (!color && cordY > this.ubicationY)) {
