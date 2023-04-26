@@ -51,7 +51,7 @@ public class Pawn extends Piece {
             return("ERROR [No puedes matar de frente]");
             //Verifica que el peon no se mueva diagonalmente mas de un cuadro
         } else if (actualMenosNuevaPosX >1 ) {
-            return "ERROR [Jugada invalida]";
+            return "ERROR [No te puedes mover diagonalmente]";
             // Verifica que el peon no intente retroceder segun su color
         } else if ((color && cordY < this.ubicationY) || (!color && cordY > this.ubicationY)) {
             return("ERROR [No puedes retroceder]");

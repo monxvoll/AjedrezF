@@ -63,8 +63,8 @@ public class PrincipalT  {
             String newCordX = scanner.nextLine();
             System.out.print("Ingrese la coordenada en Y a la que desea mover la pieza: ");
             String newCordY = scanner.nextLine();
-
             //se llama al metodo verificar datos
             System.out.println(control.verifyData(cordX, cordY, newCordX, newCordY));
+
     }
 }
