@@ -36,7 +36,7 @@ public class RookTest {
         //Test para que no salte piezas horizontalmente
         assertEquals("ERROR [Movimiento horizontal, no puedes mover, hay una pieza en tu camino que te obstruye]", rookA.movePiece(3, 2, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", rookA.movePiece(2, 1, false, board));
+        assertEquals("true", rookA.movePiece(2, 1, true, board));
     }
 
 }

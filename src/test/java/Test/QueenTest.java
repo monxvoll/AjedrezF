@@ -36,6 +36,6 @@ public class QueenTest {
         //Test para que no salte piezas diagonalmente
         assertEquals("ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]", queenA.movePiece(3, 3, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", queenA.movePiece(6, 2, false, board));
+        assertEquals("true", queenA.movePiece(6, 2, true, board));
     }
 }

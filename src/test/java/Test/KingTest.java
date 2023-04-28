@@ -22,6 +22,6 @@ public class KingTest {
         //Test para que no mate a su propio equipo
         assertEquals("ERROR [No te puedes comer a ti mismo]", kingB.movePiece(4, 2, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", kingA.movePiece(3, 1, false, board));
+        assertEquals("true", kingA.movePiece(3, 1, true, board));
     }
 }

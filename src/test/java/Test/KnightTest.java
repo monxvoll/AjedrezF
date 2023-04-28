@@ -23,7 +23,7 @@ public class KnightTest {
         //Test para que no mate a su propio equipo
         assertEquals("ERROR [No te puedes comer a ti mismo]", knightA.movePiece(3, 3, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", knightA.movePiece(1, 3, false, board));
+        assertEquals("true", knightA.movePiece(1, 3, true, board));
     }
     
 }

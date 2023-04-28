@@ -30,6 +30,6 @@ public class BishopTest {
         //Test para que no salte piezas
         assertEquals("ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]", bishopA.movePiece(1, 3, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", bishopA.movePiece(4, 3, false, board));
+        assertEquals("true", bishopA.movePiece(4, 3, true, board));
     }
 }
