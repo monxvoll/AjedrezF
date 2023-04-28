@@ -12,7 +12,6 @@ public abstract class Piece implements Moveable, Cloneable {
     protected int ubicationX = 0;
     //Ubicacion en la matriz, eje x
     protected int ubicationY = 0;
-    protected  int motionType = 0;
 
     //Metodos Principales
     public boolean verifyRange(int corX, int corY){

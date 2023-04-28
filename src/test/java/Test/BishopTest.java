@@ -24,12 +24,12 @@ public class BishopTest {
         Piece[][] board = new Piece[8][8];
         Bishop bishopA = new Bishop(true, "bishopA", 3, 1);
         Bishop bishopB = new Bishop(true, "bishopB", 2, 2);
-        Bishop bishopC = new Bishop(false, "bishopC", 4, 3);
+        Bishop bishopC = new Bishop(false, "bishopC", 4, 2);
         board[2][2]=bishopB;
-        board[4][3]=bishopB;
+        board[4][4]=bishopC;
         //Test para que no salte piezas
         assertEquals("ERROR [No puedes mover, hay una pieza en tu camino que te obstruye]", bishopA.movePiece(1, 3, true, board));
         //Test para que mate piezas de otro color
-        assertEquals("true", bishopA.movePiece(4, 3, true, board));
+        assertEquals("true", bishopA.movePiece(4, 2, true, board));
     }
 }

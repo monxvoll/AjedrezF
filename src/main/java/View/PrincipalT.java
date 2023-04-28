@@ -14,7 +14,7 @@ public class PrincipalT  {
     public static void main(String[] args) {
              
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("Bienvenido a Ajedrez");
         //Impresion de tablero
         try {
             do {
@@ -51,7 +51,7 @@ public class PrincipalT  {
         
         tablero.printBoard(control.getBoardPieces());
             //Se piden datos
-            System.out.println("Bienvenido a Ajedrez");
+
             System.out.println("Seleccione una pieza usando sus coordenadas");
 
             System.out.print("Por favor ingrese ... \nCoordenada en X : ");
