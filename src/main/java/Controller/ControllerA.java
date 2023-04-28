@@ -7,7 +7,7 @@ public class ControllerA {
     
     private Board boardInstance = new Board();
 
-    Piece[][] board = boardInstance.getClonBoard();
+    private Piece[][] board = boardInstance.getClonBoard();
 
     private int turn = 0;
 
@@ -78,14 +78,4 @@ public class ControllerA {
         return boardPieces;
     }
 
-    //setter and getter
-    public void setColor(boolean color){
-        this.colorTurn = color;
-    }
-    public boolean getColor(){
-        return colorTurn;
-    }
-    public void setTurn(int turn){
-        this.turn = turn;
-    }
 }

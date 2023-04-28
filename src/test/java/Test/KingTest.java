@@ -16,8 +16,12 @@ public class KingTest {
         Piece[][] board = new Piece[8][8];
         King kingA = new King(true, "kingA", 4, 1);
         King kingB = new King(true, "kingB", 4, 2);
+        King kingC = new King(false, "kingC", 3, 1);
         board[4][2]=kingB;
+        board[3][1]=kingC;
         //Test para que no mate a su propio equipo
         assertEquals("ERROR [No te puedes comer a ti mismo]", kingB.movePiece(4, 2, true, board));
+        //Test para que mate piezas de otro color
+        assertEquals("true", kingA.movePiece(3, 1, false, board));
     }
 }

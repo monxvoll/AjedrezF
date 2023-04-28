@@ -8,21 +8,21 @@ public class Board {
     private Piece[][] board;
 
     
-    public Piece[][] AssingnQueen(Piece[][] board) {
+    public Piece[][] assingnQueen(Piece[][] board) {
         board[5][1] = new Queen(true, "♛", 5, 1);
         board[5][8] = new Queen(false, "♕", 5, 8);
         return board;
     }
 
     //Kings
-    public Piece[][] AssingnKings(Piece[][] board) {
+    public Piece[][] assingnKings(Piece[][] board) {
         board[4][1] = new King(true, "♚", 4, 1);
         board[4][8] = new King(false, "♔", 4, 8);
         return board;
     }
 
     //Pawns
-    public Piece[][] AssingnsPawns(Piece[][] board) {
+    public Piece[][] assingnsPawns(Piece[][] board) {
         for (int i = 1; i < 9; i++) {
             board[i][2] = new Pawn(true, "♙", i, 2);
             board[i][7] = new Pawn(false, "♟", i, 7);
@@ -31,7 +31,7 @@ public class Board {
     }
 
     //Knight
-    public Piece[][] AssingnsKnight(Piece[][] board) {
+    public Piece[][] assingnsKnight(Piece[][] board) {
         board[2][1] = new Knight(true, "♞", 2, 1);
         board[7][1] = new Knight(true, "♞", 7, 1);
         board[2][8] = new Knight(false, "♘", 2, 8);
@@ -40,7 +40,7 @@ public class Board {
     }
 
     //Bishops, Alfil
-    public Piece[][] AssingnsBishops(Piece[][] board) {
+    public Piece[][] assingnsBishops(Piece[][] board) {
         board[3][1] = new Bishop(true, "♝", 3, 1);
         board[6][1] = new Bishop(true, "♝", 6, 1);
         board[3][8] = new Bishop(false, "♗", 3, 8);
@@ -49,7 +49,7 @@ public class Board {
     }
 
     //Rooks
-    public Piece[][] AssingnsRooks(Piece[][] board) {
+    public Piece[][] assingnsRooks(Piece[][] board) {
         board[1][1] = new Rook(true, "♜", 1, 1);
         board[8][1] = new Rook(true, "♜", 8, 1);
         board[1][8] = new Rook(false, "♖", 1, 8);
@@ -72,12 +72,12 @@ public class Board {
    
     public Board() {
         board = new Piece[9][9];
-        AssingnKings(board);
-        AssingnQueen(board);
-        AssingnsBishops(board);
-        AssingnsKnight(board);
-        AssingnsPawns(board);
-        AssingnsRooks(board);
+        assingnKings(board);
+        assingnQueen(board);
+        assingnsBishops(board);
+        assingnsKnight(board);
+        assingnsPawns(board);
+        assingnsRooks(board);
     }
     //Metodo mover pieza
     public Piece[][] movePiece (int cordX, int cordY, int newCordX, int newCordY, Piece type, boolean color) throws CustomWinExeption{

@@ -15,10 +15,6 @@ public abstract class Piece implements Moveable, Cloneable {
     protected  int motionType = 0;
 
     //Metodos Principales
-    public  void recieveCords ( int cordX , int cordY){
-        Board board = new Board();
-        board.getBoard();
-    }
     public boolean verifyRange(int corX, int corY){
         if(corX<9 && corX>0 && corY<9 && corY>0){
             return true;
@@ -27,7 +23,6 @@ public abstract class Piece implements Moveable, Cloneable {
     }
 
     //Getters
-    public int  getMotionType(){return  motionType;}
     public boolean getColor(){
         return color;
     }
@@ -40,25 +35,6 @@ public abstract class Piece implements Moveable, Cloneable {
     public int getUbicationY(){
         return ubicationY;
     }
-
-    //Setters
-    public  void setMotionType(int motionType) {
-        this.motionType = motionType;
-    }
-
-    public void setColor(boolean color){
-        this. color = color;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setUbicationX(int ubicationX){
-        this.ubicationX = ubicationX;
-    }
-    public void setUbicationY(int ubicationY){
-        this.ubicationY = ubicationY;
-    }
-
     //Constructor
     public Piece(boolean color, String name, int ubicationX, int ubicationY) {
         this.color = color;

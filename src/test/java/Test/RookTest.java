@@ -25,14 +25,18 @@ public class RookTest {
     public void OthersTest(){
         Piece[][] board = new Piece[8][8];
         Rook rookA = new Rook (true, "rookA", 1, 1);
-        Rook rookB = new Rook (true, "rookA", 1, 5);
-        Rook rookC = new Rook (true, "rookA", 3, 1);
+        Rook rookB = new Rook (true, "rookB", 1, 5);
+        Rook rookC = new Rook (true, "rookC", 3, 1);
+        Rook rookD = new Rook (false, "rookD", 2, 1);
         board[1][5]=rookB;
         board[3][1]=rookC;
+        board[2][1]=rookD;
         //Test para que no salte piezas verticalmente
         assertEquals("ERROR [Movimiento vertical, no puedes mover, hay una pieza en tu camino que te obstruye]", rookA.movePiece(1, 6, true, board));
         //Test para que no salte piezas horizontalmente
         assertEquals("ERROR [Movimiento horizontal, no puedes mover, hay una pieza en tu camino que te obstruye]", rookA.movePiece(3, 2, true, board));
+        //Test para que mate piezas de otro color
+        assertEquals("true", rookA.movePiece(2, 1, false, board));
     }
 
 }

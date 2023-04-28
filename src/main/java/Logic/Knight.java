@@ -41,6 +41,8 @@ public class Knight extends Piece {
             //Verifica que el caballo se  mueva en L
         } else if ((actualMenosNuevaPosX + actualMenosNuevaPosY )!= 3) {
             return "ERROR [El movimiento no cumple las reglas del ajedrez]";
+        } else if (actualMenosNuevaPosX == 0 && actualMenosNuevaPosY!=0) {
+            return "ERROR [Jugada invalida]";
         } else {
             return "true";
         }

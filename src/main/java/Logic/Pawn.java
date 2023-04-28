@@ -42,7 +42,7 @@ public class Pawn extends Piece {
             return("ERROR [Movimiento invalido para esta posicion]");
             //Verifica que si el peon no esta en su posicion inicial no se mueva mas de 2 posiciones en Y
         } else if (this.ubicationY != 7 && this.ubicationY != 2 && actualMenosNuevaPosY > 1) {
-            return("ERROR [Movimiento invalido]");
+            return("ERROR [Movimiento no permitido]");
             //Verifica que el peon no se mueva a un espacio vacio a la derecha o izquierda
         } else if (board[cordX][cordY] == null && actualMenosNuevaPosX != 0) {
             return ("ERROR [Movimiento imposible]");
@@ -53,8 +53,8 @@ public class Pawn extends Piece {
         } else if (board[cordX][cordY] != null && actualMenosNuevaPosX == 0 && actualMenosNuevaPosY == 1) {
             return("ERROR [No puedes matar de frente]");
             //Verifica que el peon no se mueva diagonalmente mas de un cuadro
-        } else if (actualMenosNuevaPosX >1  ) {
-            return "ERROR [No te puedes mover diagonalmente]";
+        } else if (actualMenosNuevaPosX >=1 && actualMenosNuevaPosY>1 && board[cordX][cordY] !=null && board[cordX][cordY].getColor() != this.color ) {
+            return "ERROR [No te puedes  mover de esta manera]";
             // Verifica que el peon no intente retroceder segun su color
         } else if ((color && cordY < this.ubicationY) || (!color && cordY > this.ubicationY)) {
             return("ERROR [No puedes retroceder]");
