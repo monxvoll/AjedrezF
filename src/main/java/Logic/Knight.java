@@ -43,6 +43,8 @@ public class Knight extends Piece {
             return "ERROR [El movimiento no cumple las reglas del ajedrez]";
         } else if (actualMenosNuevaPosX == 0 && actualMenosNuevaPosY!=0) {
             return "ERROR [Jugada invalida]";
+        } else if (actualMenosNuevaPosX>2) {
+            return "ERROR [Jugada invalida]";
         } else {
             return "true";
         }
