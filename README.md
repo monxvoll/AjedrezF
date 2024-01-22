@@ -1,11 +1,12 @@
 ***********************************************
-Proyecto de ajedrez
-presentado por : Steven Universe and Jose S
+###  Ajedrez
+##  By: [Steven Universe](https://github.com/monxvoll)
+##  [Jose S](https://github.com/Jose0J)
 
-presentado a : Ing.Ivan Leal
+###  Presentado a : Ing.Ivan Leal
 
 En que consiste el proyecto:
-El proyecto consiste en un ajedrez funcional de dos turnos
+Ajedrez funcional de dos turnos
 
 comandos usados
 git
