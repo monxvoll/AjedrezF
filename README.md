@@ -1,6 +1,6 @@
 ***********************************************
 #  Ajedrez♟️
-###  By: [Steven Universe](https://github.com/monxvoll)🐨 and [Jose S](https://github.com/Jose0J)🐋
+###  By: [Steven S](https://github.com/monxvoll)🐨 and [Jose S](https://github.com/Jose0J)🐋
 
 ###  Presentado a : Ing.Ivan Leal
 
